@@ -1,0 +1,84 @@
+* {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.slider {
+    width: 100vw;
+   
+    overflow-x: hidden;
+}
+
+.slide {
+    width: 20%;
+    transition: 1s;
+}
+
+.slides {
+    display: flex;
+    width: 500vw;
+    /* //overflow: hidden; */
+}
+
+.radiobtn {
+    display: none;
+}
+
+.manualnav {
+    position: absolute;
+    width: 110px;
+    height: 15px;
+    margin-top: -40px;
+    margin-left:47vw;
+    display: flex;
+    justify-content: center;
+    background-color:grey;
+    border-radius: 20px;
+}
+
+.manualbtn {
+    /* border: 2px solid rgb(238, 0, 0); */
+    margin-top: 2px;
+    padding: 5px;
+    height: 10px;
+    border-radius: 10px;
+    transition: 1s;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color:black;
+}
+
+/* /* .first{
+    margin-left: 0;
+}
+
+#btn1:checked ~ .first{ */
+    /* margin-left: 0; */
+/* } */
+
+#btn2:checked ~ .first{
+    margin-left: -100vw;
+}
+
+#btn3:checked ~  .first{
+    margin-left: -200vw;
+}
+
+#btn4:checked ~ .first{
+    margin-left: -300vw;
+}
+#btn1:checked{
+    background-color: red;
+}
+#btn2:checked{
+    background-color: red;
+} 
+#btn1id{
+    background-color:white;
+}
+
+/* input[type="radio"]:checked + label:before {
+    background-color: #000000;
+  } */

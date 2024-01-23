@@ -1,0 +1,20 @@
+
+#scrollbarid::-webkit-scrollbar {
+    display: none;
+}
+
+ 
+  #scrollbarid {
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+}
+
+ #scrollbarid2::-webkit-scrollbar {
+    display: none;
+}
+
+
+#scrollbarid2 {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}  
