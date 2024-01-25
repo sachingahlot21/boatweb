@@ -28,7 +28,7 @@ function App() {
     <Bestofboat />
     <Jointhetribe />
     <Pressdiv />
-    {/* <Footer /> */}
+    <Footer />
    
     </>
   )
