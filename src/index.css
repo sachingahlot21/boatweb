@@ -13,3 +13,15 @@
         scrollbar-width: none;  /* Firefox */
   }
 }
+
+@layer utilities {
+	#navli{
+		@apply relative tracking-[1px];
+	}
+	#navli::after {
+		@apply content-[''] bg-[rgb(220,38,38)] h-[3px] w-[0%] left-0 -bottom-[2px] rounded-xl absolute duration-500;
+	}
+	#navli:hover::after {
+		@apply w-[100%];
+	}
+}

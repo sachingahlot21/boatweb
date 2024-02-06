@@ -11,7 +11,9 @@ import WiredHeadphonesCategory from './categories/wiredHeadphones/WiredHeadphone
 import WirelessSpeakersCategory from './categories/wirelessSpeakers/WirelessSpeakersCategory.jsx'
 import ScrollToTop from './others/scrollToTop.js';
 import { Route,  useLocation, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-
+import pages from './import.js';
+import CartContext from './context/CartContext.jsx';
+//import BulkOrder from './import.js';
 
 
 // const router = createBrowserRouter([
@@ -42,7 +44,9 @@ const router = createBrowserRouter(
       <Route path='collections/smart-watches' element={<SmartWatchesCategory />}/>
       <Route path='collections/wired-headphones' element={<WiredHeadphonesCategory />}/>
       <Route path='collections/wireless-speakers' element={<WirelessSpeakersCategory />}/>
-
+      <Route path='pages/bulk-orders' element={<pages.BulkOrder />}/>
+      <Route path='pages/giftWithBoat' element={<pages.Giftwithboat />} />
+      <Route path='pages/store-locator' element={<pages.Storelocator/>}/>
     </Route>
     
   )
@@ -51,6 +55,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <CartContext>
     <RouterProvider router={router}/>
+    </CartContext>
   </React.StrictMode>,
 )

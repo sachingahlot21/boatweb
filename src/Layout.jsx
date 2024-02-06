@@ -11,7 +11,7 @@ function Layout() {
     <ScrollToTop />
     <Navbar />
     <Outlet />
-    {/* <Footer /> */}
+    <Footer />
     </>
   )
 }

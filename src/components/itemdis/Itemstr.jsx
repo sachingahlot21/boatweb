@@ -21,7 +21,7 @@ function Itemstr({
 
                 <div className='w-[280px] h-[280px] overflow-hidden position-relative'>
                     <div className=' position-absolute top-3 pb-8'>
-                    <img src={image} alt='no img' className='overflow-hidden mb-8 object-fill '></img>
+                    <img src={image} alt='no img' className='overflow-hidden mb-8 object-cover'></img>
                     </div>
                 </div>
 
