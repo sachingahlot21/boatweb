@@ -54,7 +54,7 @@ function Pressdiv() {
     <div className='w-[1275px] h-[350px] mt-4 mb-9 overflow-hidden relative'>
       <div className='md:w-screen md:h-10 pl-10 mb-2'>
         <h3 className='text-2xl font-normal'>In the<span className='font-bold'>Press</span></h3>
-        <div className='md:w-6 bg-red-600 h-0.5 ml-[94px]'>
+        <div className='md:w-6 w-6 bg-red-600 h-0.5 ml-[94px]'>
         </div>
       </div>
       <div className='md:flex w-[1195px] h-[280px] hidden m-auto overflow-hidden'>

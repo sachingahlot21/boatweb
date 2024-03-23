@@ -78,25 +78,30 @@ function Main() {
         </div>
       </div>
 
-      <div className='w-[1275px] h-[145px] mt-6'>
-        <div className='w-[992px] h-[145px] m-auto  flex'>
+      <div className='w-screen h-[165px] mt-6 ' >
+        <div className='w-screen h-[145px] m-auto  flex justify-center'>
 
-          <div className='w-[248px] h-[145px]'>
-            <div className='w-[248px]'><img src={offer1} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
-            <div className=' text-xl text-center'><span className='font-bold text-xl'>1 year</span>&nbsp;Warranty</div>
+          <div className='w-[20%] h-[165px] '>
+            <div className='w-[100%]'><img src={offer1} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
+
+            <div className='text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl text-xs'>1 year</span>&nbsp;Warranty</div>
           </div>
 
-          <div className='w-[248px] h-[145px] '>
-            <div className='w-[248px]'><img src={offer2} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
-            <div className=' text-xl text-center'><span className='font-bold text-xl'>7-day</span>&nbsp;Replacement</div>
+          <div className='w-[22%] h-[145px] '>
+            <div className='w-[100%]'><img src={offer2} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
+
+            <div className='text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl text-xs'>7day</span>&nbsp;Replacement</div>
           </div>
-          <div className='w-[248px] h-[145px]'>
-            <div className='w-[248px]'><img src={offer3} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
-            <div className=' text-xl text-center'><span className='font-bold text-xl'>Free</span>&nbsp;Shipping</div>
+
+          <div className='w-[20%] h-[145px] '>
+
+            <div className='w-[100%]'><img src={offer3} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
+
+            <div className=' text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl text-xs'>Free</span>&nbsp;Shipping</div>
           </div>
-          <div className='w-[248px] h-[145px] ' >
-            <div className='w-[248px]'><img src={offer4} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
-            <div className=' text-xl text-center'><span className='font-bold text-xl'>GST</span>&nbsp;Billing</div>
+          <div className='w-[20%] h-[145px] ' >
+            <div className='w-[100%]'><img src={offer4} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
+            <div className='text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl text-xs'>GST</span>&nbsp;Billing</div>
           </div>
         </div>
       </div>

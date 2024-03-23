@@ -14,9 +14,9 @@ import vid5 from './vid5.mp4'
 function Jointhetribe() {
     return (
         <>
-        <div className='md:w-screen md:h-10 pl-10 mb-'>
+        <div className='md:w-screen md:h-10 pl-10 '>
           <h3 className='text-2xl font-normal'>Join the<span className='font-bold'>Tribe</span></h3>
-          <div className='md:w-6 bg-red-600 h-0.5 ml-[114px]'>
+          <div className='md:w-6 w-6 bg-red-600 h-0.5 ml-[114px]'>
           </div>
 
         </div>

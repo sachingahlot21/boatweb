@@ -12,7 +12,7 @@ function Shopbylife() {
             <div className='w-[1275px] h-[486px] mt-8 overflow-hidden'>
                 <div className='h-[38px] pl-10'>
                     <h3 className='text-2xl font-normal'>Shop by <span className='font-bold'>Lifestyle</span></h3>
-                    <div className='md:w-6 bg-red-600 h-0.5 ml-[162px]'></div>
+                    <div className='md:w-6 w-6 bg-red-600 h-0.5 ml-[162px]'></div>
                 </div>
 
                 <div className='w-[1215px] h-[457px]  m-auto flex justify-between'>

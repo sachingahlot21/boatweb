@@ -36,6 +36,7 @@ function Header() {
 
     return (
         <>
+        {/* heading start from here */}
             <div className='md:pl-10 pl-5 md:h-10 md:w-full md:mt-1 mt-8   flex justify-between overflow-y-hidden no-scrollbar'>
                 <div>
                     <h3 className='text-2xl font-normal'>Black <span className='font-bold'>Friday</span></h3>
@@ -46,13 +47,14 @@ function Header() {
                 </div>
             </div>
 
-            <div className='md:w-[1185px] ml-5 w-[385px] md:h-[109px] h-[97px] mb-2 md:ml-10 ml:5 rounded-xl relative'>
+            {/* banner start from here */}
+            <div className='md:w-auto ml-5  w-auto md:h-[109px] h-[197px] mr-5 md:mr-5 mb-2 md:ml-10 ml:5 rounded-xl relative'>
 
-                <div className='md:hidden block'>
-                    <img src={offernewimg2} alt='no img'></img>
+                <div className='block md:hidden  md:object-fill'>
+                    <img className='w-[100%] h-[100%] rounded-xl' src={offernewimg2} alt='no img'></img>
                 </div>
-                <div className='md:block hidden'>
-                    <img src={offernewimg} alt='no img'></img>
+                <div className='md:block md:h-[100%] hidden md:object-fill'>
+                    <img className='w-auto md:h-[100%]' src={offernewimg} alt='no img'></img>
                 </div>
 
                 <div className='md:w-[600px] md:h-[80px] w-[175px] h-[80px] overflow-scroll overflow-x-scroll  text-white absolute top-2 md:left-[400px] left-[105px] md:flex pt-8 font-semibold md:no-scrollbar' >
@@ -65,6 +67,7 @@ function Header() {
                     </div>
                 </div>
             </div>
+            {/* items starts from here */}
             <div className='w-full h-100 mt-4 no-scrollbar overflow-x-scroll'>
                 <div className='w-[1185px] h-96  md:ml-10 ml-5 flex justify-between  md:no-scrollbar'>
                     <Itemstr

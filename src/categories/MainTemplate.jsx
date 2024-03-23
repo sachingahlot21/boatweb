@@ -28,12 +28,30 @@ function MainTemplate(
     }
 ) {
     const { cart, setCart } = useContext(Cartt)
+    let pp = prop.price
+    function addComma(number) {
+        if (typeof number !== 'number') {
+            return number;
+        }
+        return number.toLocaleString();
+    }
+    
+    const handleAddtobtn = (prop) => {
 
+        let existingProduct = cart.find(
+            (curItem) => curItem.productid == prop.productid
+        )
 
-    const handleAddtobtn = (prop) =>{
-        
-        setCart([...cart, prop])
-        prop.count = prop.count+1
+        if (existingProduct) {
+            alert('already in cart')
+            prop.count = prop.count + 1
+        }
+        else {
+            prop.count = prop.count + 1
+            setCart([...cart, prop])
+
+        }
+
     }
 
     return (
@@ -77,7 +95,7 @@ function MainTemplate(
                     </div>
                     <div className='font-bold text-l mt-1 ml-3'>{prop.itemName}</div>
                     <div className='flex mt-1  ml-3'>
-                        <div className='font-bold text-base'>&#8377;{prop.price} </div>
+                        <div className='font-bold text-base'>&#8377;{addComma(pp)} </div>
                         <div className='line-through text-xs text-slate-400 font-semibold ml-1 mt-1.5'>&#8377;{prop.priceBefore}</div>
                         <div className='text-xs font-bold text-[#0b9c6b] ml-1 mt-1.5' >{prop.discount}</div>
 

@@ -3,12 +3,11 @@ import React from 'react'
 function Eachitem({ image, title }) {
     return (
         <>
-            <div>
-                <div className='md:w-[98px] md:h-[82px] w-[70px] h-[70px] overflow-hidden'>
-                    <div className='md:w-[82px] w-[70px] h-[70px] md:h-[82px] ml-2'><img src={image} alt='no img'></img></div>
-
+            <div className='w-[74px] h-[126px] md:w-[98px] md:h-[150px] '>
+                <div className='w-[72px] h-[72px] mt-4 md:m-auto '>
+                    <img src={image} alt='no img'></img>
                 </div>
-                <div className='md:w-[98px] md:h-[40px] font-semibold text-gray-700 md:text-sm text-[10px] md:mt-3 mt-0 overflow-hidden leading-none text-center' >
+                <div className='font-semibold text-gray-700 text-sm md:text-sm text-[10px] md:mt-3 mt-0  leading-none text-center overflow-y-hidden' >
                     {title}
                 </div>
             </div>

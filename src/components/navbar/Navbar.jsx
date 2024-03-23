@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef ,useContext} from 'react'
 import Cart from '../cart/Cart'
 import { MdOutlineCancel } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import images from './images/images';
 import CatTemplate from './CatTemplate';
+import Cartt from '../../context/CartCon';
 
 
 function Navbar() {
@@ -11,7 +12,10 @@ function Navbar() {
     const [activecart, setCart] = useState('hidden')
     const [catmenu, setCatmenu] = useState('hidden')
     const [activeMobileBar, setactiveMobileBar] = useState('hidden')
+    const { cart, cartTotal } = useContext(Cartt)
 
+    let cartSize = cart.length
+   
     let catbtnresult;
     let loginref = useRef();
     let loginbtnref = useRef();
@@ -110,8 +114,8 @@ function Navbar() {
                 <div className='w-screen bg-white border-b-1 h-14 md:h-20 border-grey flex justify-between '>
                     {/* log div */}
                     <div className='w-10 h-8 md:hidden ml-3 mr-0 mt-3'  >
-                       <button onClick={handleMobileBar} className='overflow-hidden'><img className='overflow-clip w-7 h-7' src='https://cdn.iconscout.com/icon/free/png-512/free-menu-7688655-6391120.png?f=webp&w=512' />
-                       </button> 
+                        <button onClick={handleMobileBar} className='overflow-hidden'><img className='overflow-clip w-7 h-7' src='https://cdn.iconscout.com/icon/free/png-512/free-menu-7688655-6391120.png?f=webp&w=512' />
+                        </button>
                     </div>
                     <div className='ml-1 mt-4 md:ml-10 md:mt-4 md:block md:w-0.5/6 md:pt-1 s'>
                         <Link to='/'>
@@ -137,10 +141,23 @@ function Navbar() {
                     <div className='flex   pl-8 md:w-2/6 md:justify-around md:pt-4  '>
                         <input type='text' className=' h-10 w-72 border-none bg-[#eff4f7]  rounded-full ' placeholder='search HEADPHONE'></input>
                         <button onClick={handleLogin} className='pb-4' ref={loginbtnref} > <img className='h-6 w-6 mx-1' src='https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Profile-1.png?v=1663762989'></img></button>
-
-                        <button onClick={handleCartBtn} className='pb-6'><img className='h-6 w-6 mx-2 md:mr-10 md:mt-2' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGk0Y0kImP97Bg5pv782NGYj6jFqRNSpu4eQ&usqp=CAU'></img></button>
+                        
+                            <button onClick={handleCartBtn} className='pb-6'><img className='h-6 w-6 mx-2 md:mr-10 md:mt-2' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGk0Y0kImP97Bg5pv782NGYj6jFqRNSpu4eQ&usqp=CAU'></img></button>
+                            {
+                               cartSize === 0 ? ' ' :
+                               <div className='w-[15px] h-[15px] fixed right-5 top-[65px] bg-red-700  '>
+                               {/* <span className= 'w-[15px] h-[15px] text-[2px]'>2</span> */}
+                               <div className='w-[100%] h-[100%] font-bold text-[10px] m-auto text-center text-white'>
+                                   {cartSize}
+                               </div>
+                           </div>
+                            }
+                           
+                      
                     </div>
+
                 </div>
+
 
             </div>
             <div id='loginBtn' className={`w-[218px] h-[84px] bg-white fixed top-[110px] border-solid border-grey-300 border-2 shadow-xl shadow-slate-400 rounded-xl block right-2 z-50 ${activelogin} `} ref={loginref}>
@@ -227,7 +244,7 @@ function Navbar() {
                         </Link>
                     </ul>
                 </div>
-               
+
             </div>
 
 

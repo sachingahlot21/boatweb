@@ -5,8 +5,9 @@ import Cartt from './CartCon.js';
 const CartContext = ({children}) =>{
     
     const [cart, setCart] = useState([])
+    const [cartTotal , setCartTotal] = useState(0)
 
-    return <Cartt.Provider value={{ cart, setCart }}>{children}</Cartt.Provider>
+    return <Cartt.Provider value={{ cart, setCart,cartTotal , setCartTotal }}>{children}</Cartt.Provider>
 
 }
 export default CartContext
