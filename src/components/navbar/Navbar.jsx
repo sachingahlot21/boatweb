@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef ,useContext} from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import Cart from '../cart/Cart'
 import { MdOutlineCancel } from "react-icons/md";
 import { Link } from 'react-router-dom';
@@ -15,7 +15,7 @@ function Navbar() {
     const { cart, cartTotal } = useContext(Cartt)
 
     let cartSize = cart.length
-   
+
     let catbtnresult;
     let loginref = useRef();
     let loginbtnref = useRef();
@@ -104,26 +104,26 @@ function Navbar() {
 
     return (
         <>
-            <div className='md:block md:w-screen md:h-31 fixed z-40 border-b-[2px] border-inherit'>
+            <div className='md:block md:w-screen md:h-31 fixed z-40 border-b-[2px] border-inherit bg-white'>
 
                 <div className='w-screen bg-[#eff4f7] h-10 text-center pt-1 md:pt-2'>
                     <p className='text-xs px-1'>
                         💥 Go extra on celebrations &amp; savings with <b>Bond With boat</b>! 💥 Bag <b>offers </b>& <b>personalized gifts</b>.
                     </p>
                 </div>
-                <div className='w-screen bg-white border-b-1 h-14 md:h-20 border-grey flex justify-between '>
+                <div className='w-screen border-b-1 h-14 md:h-20 border-grey flex justify-between '>
                     {/* log div */}
-                    <div className='w-10 h-8 md:hidden ml-3 mr-0 mt-3'  >
+                    <div className='w-10 h-8 overflow-y-hidden md:hidden ml-3 mr-0 mt-3 '  >
                         <button onClick={handleMobileBar} className='overflow-hidden'><img className='overflow-clip w-7 h-7' src='https://cdn.iconscout.com/icon/free/png-512/free-menu-7688655-6391120.png?f=webp&w=512' />
                         </button>
                     </div>
-                    <div className='ml-1 mt-4 md:ml-10 md:mt-4 md:block md:w-0.5/6 md:pt-1 s'>
+                    <div className='ml-1 flex items-center md:ml-10 md:mt-4 md:block md:w-0.5/6 md:pt-1 '>
                         <Link to='/'>
                             <img className='w-18 h-6 md:w-23 md:h-9' src='https://www.boat-lifestyle.com/cdn/shop/files/boAt_logo_small_3067da8c-a83b-46dd-b28b-6ef1e16ccd17_small.svg?v=1693549434' alt='logo.svg'></img>
                         </Link>
                     </div>
                     {/* navbar lis div */}
-                    <div className=' w-3/6 pt-6  hidden md:block'>
+                    <div className=' w-3/6 pt-6  hidden md:block '>
                         <ul className='flex justify-around text-base h-[30px] text-[#3e3d3d]'>
                             <li id='navli' onClick={handleCatBtn} ref={catbtnref} className='hover:text-black cursor-pointer h-[25px]  hover:font-bold overflow-hidden'>Categories</li>
                             <li id='navli' className='hover:text-black cursor-pointer hover:font-bold overflow-hidden h-[25px]'>Daily Deals</li>
@@ -138,22 +138,26 @@ function Navbar() {
                         </ul>
                     </div>
                     {/* search and car div */}
-                    <div className='flex   pl-8 md:w-2/6 md:justify-around md:pt-4  '>
+                    <div className='flex items-center   pl-8 md:w-2/6 md:justify-around'>
+
                         <input type='text' className=' h-10 w-72 border-none bg-[#eff4f7]  rounded-full ' placeholder='search HEADPHONE'></input>
-                        <button onClick={handleLogin} className='pb-4' ref={loginbtnref} > <img className='h-6 w-6 mx-1' src='https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Profile-1.png?v=1663762989'></img></button>
-                        
-                            <button onClick={handleCartBtn} className='pb-6'><img className='h-6 w-6 mx-2 md:mr-10 md:mt-2' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGk0Y0kImP97Bg5pv782NGYj6jFqRNSpu4eQ&usqp=CAU'></img></button>
+
+                        <button onClick={handleLogin} className='' ref={loginbtnref} > <img className='h-6 w-6 mx-1' src='https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Profile-1.png?v=1663762989'></img></button>
+
+                        <div className='h-9 w-9 flex justify-center items-center mx-2 md:mr-10   relative'>
+                            <button onClick={handleCartBtn} className=''><img className='h-6 w-6  md:mr-10 ' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGk0Y0kImP97Bg5pv782NGYj6jFqRNSpu4eQ&usqp=CAU'></img>
+                            </button>
                             {
-                               cartSize === 0 ? ' ' :
-                               <div className='w-[15px] h-[15px] fixed right-5 top-[65px] bg-red-700  '>
-                               {/* <span className= 'w-[15px] h-[15px] text-[2px]'>2</span> */}
-                               <div className='w-[100%] h-[100%] font-bold text-[10px] m-auto text-center text-white'>
-                                   {cartSize}
-                               </div>
-                           </div>
+                                cartSize === 0 ? ' ' :
+                                    <div className='w-[15px] h-[15px] absolute right-2 top-2 bg-red-700  '>
+                                        {/* <span className= 'w-[15px] h-[15px] text-[2px]'>2</span> */}
+                                        <div className='w-[100%] h-[100%] font-bold text-[10px] m-auto text-center text-white'>
+                                            {cartSize}
+                                        </div>
+                                    </div>
                             }
-                           
-                      
+                        </div>
+
                     </div>
 
                 </div>

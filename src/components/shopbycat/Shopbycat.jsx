@@ -61,7 +61,7 @@ function Main() {
           <div className='w-[72px] h-[126px] md:h-[150px] md:w-[98px] '>
           <Eachitem image={smartwatch} title='Smart Watches' />
           </div>
-          <div className='w-[72px] h-[126px] md:h-[150px] md:w-[98px] '>
+          <div className='w-[72px] h-[126px] md:h-[150px] md:w-[98px] md:overflow-y-hidden overflow-y-hidden '>
           <Eachitem image={wirelessbuds} title='True Wireless Earbuds' />
           </div>
           <div className='w-[74px] h-[126px] md:h-[150px] md:w-[98px] '>

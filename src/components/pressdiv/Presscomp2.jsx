@@ -4,7 +4,7 @@ import { BiSolidQuoteRight } from "react-icons/bi";
 
 function Presscomp2({ image, text }) {
     return (
-        <div className='min-w-[100%] mr-9 overflow-hidden h-[600px] bg-[rgb(208,217,222)]'>
+        <div className='min-w-[100%]  overflow-hidden h-[600px] bg-[rgb(208,217,222)]'>
             <div>
             <BiSolidQuoteRight className='w-[50px] h-[60px] text-[rgb(102,102,104)] m-auto'/>
             </div>

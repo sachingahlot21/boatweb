@@ -79,29 +79,29 @@ function Main() {
       </div>
 
       <div className='w-screen h-[165px] mt-6 ' >
-        <div className='w-screen h-[145px] m-auto  flex justify-center'>
+        <div className='w-screen h-[145px] m-auto  flex justify-center overflow-y-hidden md:overflow-y-hidden'>
 
-          <div className='w-[20%] h-[165px] '>
+          <div className='w-[20%] h-[165px] overflow-y-hidden'>
             <div className='w-[100%]'><img src={offer1} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
 
-            <div className='text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl text-xs'>1 year</span>&nbsp;Warranty</div>
+            <div className='text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl sm:text-sm text-xs'>1 year</span>&nbsp;Warranty</div>
           </div>
 
-          <div className='w-[22%] h-[145px] '>
+          <div className='w-[22%] h-[145px] overflow-y-hidden '>
             <div className='w-[100%]'><img src={offer2} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
 
-            <div className='text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl text-xs'>7day</span>&nbsp;Replacement</div>
+            <div className='text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl sm:text-sm text-xs'>7day</span>&nbsp;Replacement</div>
           </div>
 
-          <div className='w-[20%] h-[145px] '>
+          <div className='w-[20%] h-[145px] overflow-y-hidden '>
 
             <div className='w-[100%]'><img src={offer3} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
 
-            <div className=' text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl text-xs'>Free</span>&nbsp;Shipping</div>
+            <div className=' text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl sm:text-sm text-xs'>Free</span>&nbsp;Shipping</div>
           </div>
-          <div className='w-[20%] h-[145px] ' >
+          <div className='w-[20%] h-[145px] overflow-y-hidden ' >
             <div className='w-[100%]'><img src={offer4} alt='no img' className='w-[112px] h-[112px] m-auto'></img></div>
-            <div className='text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl text-xs'>GST</span>&nbsp;Billing</div>
+            <div className='text-xs flex flex-col md:block md:text-xl text-center'><span className='font-bold md:text-xl sm:text-sm text-xs'>GST</span>&nbsp;Billing</div>
           </div>
         </div>
       </div>

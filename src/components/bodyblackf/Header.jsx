@@ -57,7 +57,7 @@ function Header() {
                     <img className='w-auto md:h-[100%]' src={offernewimg} alt='no img'></img>
                 </div>
 
-                <div className='md:w-[600px] md:h-[80px] w-[175px] h-[80px] overflow-scroll overflow-x-scroll  text-white absolute top-2 md:left-[400px] left-[105px] md:flex pt-8 font-semibold md:no-scrollbar' >
+                {/* <div className='md:w-[600px] md:h-[80px] w-[175px] h-[80px] overflow-scroll overflow-x-scroll  text-white absolute top-2 md:left-[400px] left-[105px] md:flex pt-8 font-semibold md:no-scrollbar' >
                     <h3 className='md:text-2xl text-sm mr-2'>Ending In </h3>
                     <div className='flex'>
                         <div className='flex md:text-4xl text-xs font-bold mr-2'><div id='daysid' className='mb-2 overflow-hidden'> 00</div><div className='md:text-2xl text-xs  font-semibold'>Days</div></div>
@@ -65,7 +65,7 @@ function Header() {
                         <div className='flex md:text-4xl text-xs font-bold mr-2'><div id='minsid' className='mb-2 overflow-hidden'>00</div><div className='md:text-2xl text-xs  font-semibold'>Mins</div></div>
                         <div className='flex md:text-4xl text-xs font-bold mr-2'> <div id='secid' className='mb-2 overflow-hidden'>00</div><div className='md:text-2xl  text-xs font-semibold'>Sec</div></div>
                     </div>
-                </div>
+                </div> */}
             </div>
             {/* items starts from here */}
             <div className='w-full h-100 mt-4 no-scrollbar overflow-x-scroll'>
