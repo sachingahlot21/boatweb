@@ -21,7 +21,9 @@ function App() {
   return (
     <>
     {/* <Navbar /> */}
+{
 
+}
     <Slider1 />
     <Body1 />
     <Main />

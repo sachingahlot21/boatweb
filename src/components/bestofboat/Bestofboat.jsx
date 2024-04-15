@@ -59,10 +59,9 @@ function Bestofboat() {
                     </div>
                 </div>
                 <div className='w-[1195px] h-[60px] bg-white ml-10'>
-                    <div className='w-[1195px] h-[60px]  pt-4 ' >
-
+                    <div className='w-[1195px] h-[60px]  pt-4'>
                         <button
-                            className={activeButtonIndex === 0 ? "bg-[#ecf0f4] rounded-[18px] w-[126px] h-[32px] bg-none text-black mr-2 font-bold " : "  bg-white w-[123px] h-[32px] bg-none text-[#696868] mr-2 "}
+                            className={activeButtonIndex === 0 ? " bg-[#ecf0f4] rounded-[18px] w-[126px] h-[32px] bg-none text-black mr-2 font-bold " : "  bg-white w-[123px] h-[32px] bg-none text-[#696868] mr-2 "}
                             onClick={() => setActiveButtonIndex(0)}
                         >Best Sellers</button>
 
@@ -73,7 +72,7 @@ function Bestofboat() {
 
 
                         <button
-                            className={activeButtonIndex === 2 ? "bg-[#ecf0f4] rounded-[18px] w-[135px] h-[32px] bg-none text-black mr-2 font-bold" : "bg-white w-[123px] h-[32px] bg-none text-[#696868] mr-2"}
+                            className={activeButtonIndex === 2 ? " bg-[#ecf0f4]  rounded-[18px] w-[135px] h-[32px] bg-none text-black mr-2 font-bold" : "bg-white w-[123px] h-[32px] bg-none text-[#696868] mr-2"}
                             onClick={() => setActiveButtonIndex(2)}
                         >Top Earbuds</button>
 
@@ -92,9 +91,7 @@ function Bestofboat() {
             </div>
 
             <div id='divblocks' className='w-[1400px] h-[400px] '>
-
                 <div className={activeButtonIndex === 0 ? 'w-[100%]  h-[400px]  block' : 'hidden'}>
-
                     <div className='w-full h-96 mt-2'>
                         <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
                             <Itemstr
@@ -150,7 +147,7 @@ function Bestofboat() {
                 </div>
 
                 <div className={activeButtonIndex === 1 ? 'w-[100%] h-[400px]  block' : 'hidden'}>
-                <div className='w-full h-96 mt-2'>
+                    <div className='w-full h-96 mt-2'>
                         <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
                             <Itemstr
                                 image={ht1}
@@ -200,11 +197,10 @@ function Bestofboat() {
                                 number='647' />
                         </div>
                     </div>
-               </div>
+                </div>
 
                 <div className={activeButtonIndex === 2 ? 'w-[100%]  h-[400px]  block' : 'hidden'}>
-                    
-                <div className='w-full h-96 mt-2'>
+                    <div className='w-full h-96 mt-2'>
                         <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
                             <Itemstr
                                 image={te1}
@@ -254,15 +250,11 @@ function Bestofboat() {
                                 number='6' />
                         </div>
                     </div>
-
-
-                    
-                    
-               </div>
+                </div>
 
                 <div className={activeButtonIndex === 3 ? 'w-[100%]  h-[400px]  block' : 'hidden'}>
-                         
-                <div className='w-full h-96 mt-2'>
+
+                    <div className='w-full h-96 mt-2'>
                         <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
                             <Itemstr
                                 image={tw1}
@@ -313,11 +305,11 @@ function Bestofboat() {
                         </div>
                     </div>
 
-                    
+
                 </div>
 
                 <div className={activeButtonIndex === 4 ? 'w-[100%]  h-[400px]  block' : 'hidden'}>
-                <div className='w-full h-96 mt-2'>
+                    <div className='w-full h-96 mt-2'>
                         <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
                             <Itemstr
                                 image={ca1}
@@ -325,7 +317,7 @@ function Bestofboat() {
                                 offer='false'
                                 name='Qc Car Charger'
                                 price='499'
-                               discount='50%off'
+                                discount='50%off'
                                 beforedisprice='999'
                                 //   colors='+5
                                 rating='4.9'
@@ -338,7 +330,7 @@ function Bestofboat() {
                                 usp='BT Calling'
                                 name='Turbo Car Charger'
                                 price='499'
-                               discount='50%off'
+                                discount='50%off'
                                 beforedisprice='999'
                                 //   colors='+5'
                                 rating='4.9'
@@ -349,7 +341,7 @@ function Bestofboat() {
                                 usp='Health Monitoring'
                                 name='F Type Car Charger'
                                 price='499'
-                               discount='50%off'
+                                discount='50%off'
                                 beforedisprice='999'
                                 //    colors='+5'
                                 rating='5.0'
@@ -368,8 +360,8 @@ function Bestofboat() {
                         </div>
                     </div>
 
-                    
-                 </div>
+
+                </div>
 
 
             </div>

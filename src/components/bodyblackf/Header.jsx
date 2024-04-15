@@ -12,26 +12,26 @@ import bfrip4 from './bfrip4.jpg'
 
 function Header() {
 
-    var countdown = new Date("Jan 10, 2024 00:00:00 ").getTime();
-    var x = setInterval(function () {
-        var now = new Date().getTime();
-        var distance = countdown - now;
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24))
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000)
-        document.getElementById('daysid').innerHTML = days;
-        document.getElementById('hoursid').innerHTML = hours;
-        document.getElementById('minsid').innerHTML = minutes;
-        document.getElementById('secid').innerHTML = seconds;
-        if (distance < 0) {
-            clearInterval(x)
-            document.getElementById('daysid').innerHTML = '00';
-            document.getElementById('hoursid').innerHTML = '00';
-            document.getElementById('minsid').innerHTML = '00';
-            document.getElementById('secid').innerHTML = '00';
-        }
-    }, 1000)
+    // var countdown = new Date("Jan 10, 2024 00:00:00 ").getTime();
+    // var x = setInterval(function () {
+    //     var now = new Date().getTime();
+    //     var distance = countdown - now;
+    //     var days = Math.floor(distance / (1000 * 60 * 60 * 24))
+    //     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    //     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+    //     var seconds = Math.floor((distance % (1000 * 60)) / 1000)
+    //     document.getElementById('daysid').innerHTML = days;
+    //     document.getElementById('hoursid').innerHTML = hours;
+    //     document.getElementById('minsid').innerHTML = minutes;
+    //     document.getElementById('secid').innerHTML = seconds;
+    //     if (distance < 0) {
+    //         clearInterval(x)
+    //         document.getElementById('daysid').innerHTML = '00';
+    //         document.getElementById('hoursid').innerHTML = '00';
+    //         document.getElementById('minsid').innerHTML = '00';
+    //         document.getElementById('secid').innerHTML = '00';
+    //     }
+    // }, 1000)
 
 
     return (

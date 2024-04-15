@@ -27,7 +27,6 @@ const productListWEB = [
         image: webbuds1,
         count : 0 ,
         grandtotal :0,
-        
     },
     {
         productid: 'wirelessearbuds2',

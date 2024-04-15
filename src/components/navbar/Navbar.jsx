@@ -13,7 +13,8 @@ function Navbar() {
     const [catmenu, setCatmenu] = useState('hidden')
     const [activeMobileBar, setactiveMobileBar] = useState('hidden')
     const { cart, cartTotal } = useContext(Cartt)
-
+    const [handleCatPlus, setCatPlus] = useState(false)
+    const [handleMoreBtn, setMoreBtn] = useState(false)
     let cartSize = cart.length
 
     let catbtnresult;
@@ -53,7 +54,18 @@ function Navbar() {
     // }
 
 
-
+    const handleMore = () => {
+        setMoreBtn(!handleMoreBtn)
+        if (handleCatPlus) {
+            setCatPlus(false)
+        }
+    }
+    const handleCatPlusFun = () => {
+        setCatPlus(!handleCatPlus)
+        if (handleMoreBtn) {
+            setMoreBtn(false)
+        }
+    }
     useEffect(() => {
         let handler = (e) => {
             if (!loginref.current.contains(e.target) && !loginbtnref.current.contains(e.target)) {
@@ -104,7 +116,7 @@ function Navbar() {
 
     return (
         <>
-            <div className='md:block md:w-screen md:h-31 fixed z-40 border-b-[2px] border-inherit bg-white'>
+            <div className='overflow-x-hidden md:block md:w-screen md:h-31 fixed z-[110] border-b-[2px] border-inherit bg-white'>
 
                 <div className='w-screen bg-[#eff4f7] h-10 text-center pt-1 md:pt-2'>
                     <p className='text-xs px-1'>
@@ -114,7 +126,13 @@ function Navbar() {
                 <div className='w-screen border-b-1 h-14 md:h-20 border-grey flex justify-between '>
                     {/* log div */}
                     <div className='w-10 h-8 overflow-y-hidden md:hidden ml-3 mr-0 mt-3 '  >
-                        <button onClick={handleMobileBar} className='overflow-hidden'><img className='overflow-clip w-7 h-7' src='https://cdn.iconscout.com/icon/free/png-512/free-menu-7688655-6391120.png?f=webp&w=512' />
+                        <button onClick={handleMobileBar} className='overflow-hidden'>
+                            {
+                                activeMobileBar === 'hidden' ?
+                                    <img className='overflow-clip w-7 h-7' src='https://cdn.iconscout.com/icon/free/png-512/free-menu-7688655-6391120.png?f=webp&w=512' />
+                                    :
+                                    <img className='overflow-clip w-[30px] h-[30px]' src='https://cdn.iconscout.com/icon/free/png-512/free-cross-275-458716.png?f=webp&w=512' />
+                            }
                         </button>
                     </div>
                     <div className='ml-1 flex items-center md:ml-10 md:mt-4 md:block md:w-0.5/6 md:pt-1 '>
@@ -139,11 +157,8 @@ function Navbar() {
                     </div>
                     {/* search and car div */}
                     <div className='flex items-center   pl-8 md:w-2/6 md:justify-around'>
-
                         <input type='text' className=' h-10 w-72 border-none bg-[#eff4f7]  rounded-full ' placeholder='search HEADPHONE'></input>
-
                         <button onClick={handleLogin} className='' ref={loginbtnref} > <img className='h-6 w-6 mx-1' src='https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Profile-1.png?v=1663762989'></img></button>
-
                         <div className='h-9 w-9 flex justify-center items-center mx-2 md:mr-10   relative'>
                             <button onClick={handleCartBtn} className=''><img className='h-6 w-6  md:mr-10 ' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGk0Y0kImP97Bg5pv782NGYj6jFqRNSpu4eQ&usqp=CAU'></img>
                             </button>
@@ -157,12 +172,8 @@ function Navbar() {
                                     </div>
                             }
                         </div>
-
                     </div>
-
                 </div>
-
-
             </div>
             <div id='loginBtn' className={`w-[218px] h-[84px] bg-white fixed top-[110px] border-solid border-grey-300 border-2 shadow-xl shadow-slate-400 rounded-xl block right-2 z-50 ${activelogin} `} ref={loginref}>
                 <div className='flex justify-between'>
@@ -172,9 +183,79 @@ function Navbar() {
                 <div className='w-[200px] h-[35px] mt-3 m-auto  '>
                     <button className='bg-black w-[200px] h-[35px] text-white rounded-md text-sm font-bold'>Login</button>
                 </div>
-
             </div>
-            <div className={`md:hidden bg-opacity-30 left-0  w-[100vw] h-[100vh] z-49 bg-black fixed   ${activeMobileBar}`}>
+            <div className={`md:hidden bg-opacity-30 left-0  w-[100vw] h-[100vh] z-[100] bg-black fixed pt-[10vh]   ${activeMobileBar}`}>
+                <div className='w-[80%] h-[100%] bg-white z-[100]'>
+                    <div className=' w-[100%] h-auto '>
+                        <div onClick={handleCatPlusFun} className='p-4 w-[100%] h-[8vh]  flex justify-between'>
+                            <h1 className='font-bold'>Categories</h1>
+                            <span className='text-3xl flex items-center overflow-y-hidden'>{handleCatPlus ? '-' : '+'}</span>
+                        </div>
+                        <div className={`w-[100%] h-[62vh]  p-4 pt-0 flex-wrap gap-2 ${handleCatPlus ? 'flex' : 'hidden'}`} >
+                            <div className='w-[90px] h-[130px] '>
+                                <img className='w-[100%] h-[70%] object-cover' src={images.catimg1}></img>
+                                <h1 className='w-[100%] h-[30%] text-xs  text-center'>True Wireless Earbuds</h1>
+                            </div>
+
+                            <div className='w-[90px] h-[130px] '>
+                                <img className='w-[100%] h-[70%] object-cover' src={images.catimg2}></img>
+                                <h1 className='w-[100%] h-[30%] text-xs  text-center'>Wireless Speakers</h1>
+                            </div>
+
+                            <div className='w-[90px] h-[130px] '>
+                                <img className='w-[100%] h-[70%] object-cover' src={images.catimg3}></img>
+                                <h1 className='w-[100%] h-[30%] text-xs  text-center'>Smart Watches</h1>
+                            </div>
+
+                            <div className='w-[90px] h-[130px] '>
+                                <img className='w-[100%] h-[70%] object-cover' src={images.catimg4}></img>
+                                <h1 className='w-[100%] h-[30%] text-xs  text-center'>Neckbands</h1>
+                            </div>
+
+                            <div className='w-[90px] h-[130px] '>
+                                <img className='w-[100%] h-[70%] object-cover' src={images.catimg5}></img>
+                                <h1 className='w-[100%] h-[30%] text-xs  text-center'>Wired Headphones</h1>
+                            </div>
+
+                            <div className='w-[90px] h-[130px] '> <img className='w-[100%] h-[70%] object-cover' src={images.catimg6}></img>
+                                <h1 className='w-[100%] h-[30%] text-xs  text-center'>Soundbars</h1></div>
+
+                            <div className='w-[90px] h-[130px] '> <img className='w-[100%] h-[70%] object-cover' src={images.catimg7}></img>
+                                <h1 className='w-[100%] h-[30%] text-xs  text-center'>Gaming Headphones</h1></div>
+
+                            <div className='w-[90px] h-[130px] '> <img className='w-[100%] h-[70%] object-cover' src={images.catimg8}></img>
+                                <h1 className='w-[100%] h-[30%] text-xs  text-center'>Wireless Headphones</h1></div>
+
+                            <div className='w-[90px] h-[130px] '> <img className='w-[100%] h-[70%] object-cover' src={images.catimg9}></img>
+                                <h1 className='w-[100%] h-[30%] text-xs  text-center'>Trimmers</h1></div>
+
+                            <div className='w-[90px] h-[130px] '> <img className='w-[100%] h-[70%] object-cover' src={images.catimg10}></img>
+                                <h1 className='w-[100%] h-[30%] text-xs  text-center'>Chargers</h1></div>
+
+                        </div>
+                        <div className='p-4 w-[100%] flex justify-between h-[8vh] '>
+                            <h1 className='font-bold'>Daily Deals</h1>
+                            <span className='font-bold text-xl'>&gt;</span>
+                        </div>
+                        <div className='p-4 w-[100%] flex justify-between h-[8vh] '>
+                            <h1 className='font-bold'>Gift with boAt</h1>
+                            <span className='font-bold text-xl'>&gt;</span>
+                        </div>
+                        <div className='p-4 flex justify-between w-[100%] h-[8vh] '>
+                            <h1 className='font-bold'>Corporate Orders</h1>
+                            <span className='font-bold text-xl'>&gt;</span>
+                        </div>
+                        <div onClick={handleMore} className='p-4 w-[100%] flex justify-between h-[8vh]  '>
+                            <h1 className='font-bold '>More</h1>
+                            <span className='text-3xl flex items-center overflow-y-hidden'>{handleMoreBtn ? '-' : '+'}</span>
+                        </div>
+                        <div className={`w-[100%] h-[10vh] font-semibold  p-4 pt-0 ${handleMoreBtn ? 'block' : 'hidden'}`}>
+                            <h1>Blogs</h1>
+                            <h1>Careers</h1>
+                            <h1>Store Locator</h1>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
