@@ -12,7 +12,7 @@ import neckbands11 from './neckbands11.jpg'
 import neckbands12 from './neckbands12.jpg'
 const neckBandsList = [
     {
-        productid: 'neckBands2',
+        productid: 'neckBands1',
         itemName: 'Rockerz 235 V2 ',
         category: 'neck bands',
         rating: '4.8',

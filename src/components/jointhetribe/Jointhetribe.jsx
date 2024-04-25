@@ -14,14 +14,14 @@ import vid5 from './vid5.mp4'
 function Jointhetribe() {
     return (
         <>
-        <div className='md:w-screen md:h-10 pl-10 '>
+        <div className='md:w-screen md:h-10 xl:pl-10 pl-2'>
           <h3 className='text-2xl font-normal'>Join the<span className='font-bold'>Tribe</span></h3>
           <div className='md:w-6 w-6 bg-red-600 h-0.5 ml-[114px]'>
           </div>
 
         </div>
-        <div className='w-[1275px] h-[550px] '>
-            <div className='w-[1195px] h-[550px] m-auto  flex' >
+        <div className='overflow-x-scroll no-scrollbar ml-2 lg:ml-9 h-[550px] w-full mt-2 '>
+            <div className='w-[1450px] h-[550px] m-auto  flex' >
                 <div className='min-w-[240px] h-[540px]  mr-6'>
                     <Jtbcomp 
                     name='Stone Majestic Riverdale Rocker'

@@ -36,8 +36,8 @@ function Header() {
 
     return (
         <>
-        {/* heading start from here */}
-            <div className='md:pl-10 pl-5 md:h-10 md:w-full md:mt-1 mt-8   flex justify-between overflow-y-hidden no-scrollbar'>
+            {/* heading start from here */}
+            <div className='  md:pl-10 pl-2 md:h-10 md:w-full md:mt-1 mt-8   flex justify-between overflow-y-hidden no-scrollbar'>
                 <div>
                     <h3 className='text-2xl font-normal'>Black <span className='font-bold'>Friday</span></h3>
                     <div className='md:w-6 bg-red-600 h-0.5 ml-[105px]'></div>
@@ -48,12 +48,12 @@ function Header() {
             </div>
 
             {/* banner start from here */}
-            <div className='md:w-auto ml-5  w-auto md:h-[109px] h-[197px] mr-5 md:mr-5 mb-2 md:ml-10 ml:5 rounded-xl relative'>
+            <div className=' md:w-auto ml-2  w-screen mt-2 md:h-[109px] h-[80px] mr-2 md:mr-5 mb-2 md:ml-10 ml:5 rounded-xl relative'>
 
-                <div className='block md:hidden  md:object-fill'>
-                    <img className='w-[100%] h-[100%] rounded-xl' src={offernewimg2} alt='no img'></img>
+                <div className='w-[98%] mr-2  h-[100%] block md:hidden '>
+                    <img className='w-[100%]  object-fill   h-[100%] rounded-xl' src={offernewimg2} alt='no img'></img>
                 </div>
-                <div className='md:block md:h-[100%] hidden md:object-fill'>
+                <div className='md:block md:h-[100%] object-fill hidden md:object-fill'>
                     <img className='w-auto md:h-[100%]' src={offernewimg} alt='no img'></img>
                 </div>
 
@@ -68,54 +68,69 @@ function Header() {
                 </div> */}
             </div>
             {/* items starts from here */}
-            <div className='w-full h-100 mt-4 no-scrollbar overflow-x-scroll'>
-                <div className='w-[1185px] h-96  md:ml-10 ml-5 flex justify-between  md:no-scrollbar'>
+            <div className='overflow-y-hidden w-full h-[380px] mt-4 no-scrollbar ml-2 overflow-x-scroll'>
+                <div className='w-[1185px] h-96  md:ml-9 flex justify-between  md:no-scrollbar'>
                     <Itemstr
                         image={bfrip1}
                         usp='60 Hours Playback'
                         offer='Engraving Available'
-                        name='Airdopes 131'
+                        itemName='Airdopes 131'
                         price='849'
                         discount='72% off'
-                        beforedisprice='2,990'
+                        priceBefore='2,990'
                         //   colors='+5'
                         rating='4.8'
                         number='1336'
+                        productid='black_friday'
+                        count='0'
+                        category='ear_buds1'
                     />
 
                     <Itemstr
                         offer='Engraving Available'
                         image={bfrip2}
                         usp='40 Hours Playback'
-                        name='Airdopes 161'
+                        itemName='Airdopes 161'
                         price='999'
                         discount='60% off'
-                        beforedisprice='2,490'
+                        priceBefore='2490'
                         //   colors='+5'
                         rating='4.9'
-                        number='150' />
+                        number='150'
+                        productid='black_friday2'
+                        count='0'
+                        category='ear_buds1'
+                    />
                     <Itemstr
                         offer='false'
                         image={bfrip3}
                         usp='8 Hours Playback'
-                        name='Rockerz 235 V2'
+                        itemName='Rockerz 235 V2'
                         price='999'
                         discount='67% off'
-                        beforedisprice='2,990'
+                        priceBefore='2,990'
                         //    colors='+5'
                         rating='4.8'
-                        number='1074' />
+                        number='1074'
+                        productid='black_friday3'
+                        count='0'
+                        category='ear_buds1'
+                    />
                     <Itemstr
                         offer='&#8377;200 OFF ON BIG200'
                         image={bfrip4}
                         usp='42 Hours Playback'
-                        name='Airdopes 141'
+                        itemName='Airdopes 141'
                         price='1299'
                         discount='71%off'
-                        beforedisprice='4,490'
+                        priceBefore='4,490'
                         //    colors='+5'
                         rating='4.9'
-                        number='647' />
+                        number='647'
+                        productid='black_friday4'
+                        count='0'
+                        category='ear_buds1'
+                    />
                 </div>
             </div>
 

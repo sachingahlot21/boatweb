@@ -16,30 +16,33 @@ function Main() {
   return (
     <>
 
-      <div className='pl-10  mt-5 md:h-10 md:w-full  flex justify-between'>
+      <div className='xl:pl-10 pl-2  mt-5 md:h-10 md:w-full  flex justify-between'>
         <div>
           <h3 className='text-2xl font-normal'>New <span className='font-bold'>Launches</span></h3>
           <div className='md:w-6 bg-red-600 h-0.5 ml-[133px]'></div>
         </div>
-        <div className='float-left md:h-8 md:w-24 mr-10 mt-2'>
+        <div className='float-left md:h-8 md:w-24 xl:mr-10 mr-2 mt-2'>
           <h3 className='flex font-bold mt-1 ml-2 text-[#2f5b97]'>View All <IoArrowForwardCircleOutline className='font-bold ml-1 mt-1' /></h3>
         </div>
       </div>
 
 
-      <div className='w-full h-96 mt-2'>
-        <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
+      <div className='overflow-x-scroll no-scrollbar w-full h-96 mt-2'>
+        <div className='w-[1185px] h-96  xl:ml-10 ml-2 flex justify-between overflow-hidden'>
           <Itemstr
             image={newlaunch1}
             usp='16W RMS Sound'
             offer='New Launch'
             name='Aavante Bar 558'
-            price='2,199'
+            price='2199'
             discount='45%off'
-            beforedisprice='3,990'
+            priceBefore='3,990'
             //   colors='+5'
             rating='firstuser'
             number='1336'
+            productid='newlaunch1'
+            count='0'
+            category='new_launch1'
           />
 
           <Itemstr
@@ -47,34 +50,48 @@ function Main() {
             image={newlaunch2}
             usp='12 Hours Playback'
             name='Stone 750'
-            price='2,199'
+            price='2199'
             discount='63%off'
-            beforedisprice='5,990'
+            priceBefore='5,990'
             //   colors='+5'
             rating='firstuser'
-            number='150' />
+            number='150'
+            productid='newlaunch2'
+            count='0'
+            category='new_launch2'
+            />
+
           <Itemstr
             offer='New Launch'
             image={newlaunch3}
             usp='AMOLED Display'
             name='Lunar Peak'
-            price='2,699'
+            price='2699'
             discount='61%off'
-            beforedisprice='6,999'
+            priceBefore='6,999'
             //    colors='+5'
             rating='firstuser'
-            number='1074' />
+            number='1074' 
+            productid='newlaunch3'
+            count='0'
+            category='new_launch3'
+            />
+
           <Itemstr
             offer='New Launch'
             image={newlaunch4}
             usp='40 Hours Playback'
             name='Airdopes 71'
-            price='1,199'
+            price='1199'
             discount='70%off'
-            beforedisprice='3,990'
+            priceBefore='3,990'
             //    colors='+5'
             rating='firstuser'
-            number='647' />
+            number='647'
+            productid='newlaunch4'
+            count='0'
+            category='new_launch4'
+             />
         </div>
       </div>
 

@@ -91,11 +91,11 @@ function CartProductTemp({ prop, key }) {
 
             </div>
             <div className='w-[10%]'>
-            <button className='mr-9 mt-2' onClick={handleRemoveBtn}><RiDeleteBin6Line /></button>
+                <button className='mr-9 mt-2' onClick={handleRemoveBtn}><RiDeleteBin6Line /></button>
             </div>
             {/* <button onClick={verifyCount}>CHECKKK</button>
             <br></br> */}
-            
+
         </div>
     )
 }

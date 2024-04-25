@@ -29,6 +29,7 @@ function MainTemplate(
 ) {
     const { cart, setCart } = useContext(Cartt)
     let pp = prop.price
+    
     function addComma(number) {
         if (typeof number !== 'number') {
             return number;
@@ -44,7 +45,7 @@ function MainTemplate(
 
         if (existingProduct) {
             alert('already in cart')
-            prop.count = prop.count + 1
+            // prop.count = prop.count + 1
         }
         else {
             prop.count = prop.count + 1

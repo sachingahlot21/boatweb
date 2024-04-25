@@ -91,11 +91,11 @@ function Footer() {
 
         </div>
 
-        <div className={`w-[40px] h-[30%] bg-[rgb(255,125,125)]  hover:bg-[rgb(220,38,38)] fixed bottom-2 right-5 overflow-hidden ${showbtn}`}>
+        {/* <div className={`w-[40px] h-[30%] bg-[rgb(255,125,125)]  hover:bg-[rgb(220,38,38)] fixed bottom-2 right-5 overflow-hidden ${showbtn}`}>
           <button className={`w-[40px] h-[40px] overflow-hidden `} onClick={handleScrollBtn}>
             <FaArrowUpLong className='text-bold text-3xl pl-3 overflow-hidden ' />
           </button>
-        </div>
+        </div> */}
       </div>
       </div>
     </>

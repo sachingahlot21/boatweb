@@ -46,9 +46,9 @@ function Bestofboat() {
 
 
     return (
-        <div className='w-[1275px] h-[510px] '>
-            <div id='header' className='w-[1250px] h-[97px] bg-white'>
-                <div className='h-[35px] w-[1250px] pl-10 flex justify-between overflow-hidden'>
+        <>
+            <div id='header' className='w-[1250px] h-[97px] ml-2 xl:ml-9 bg-white'>
+                <div className='h-[35px] w-[1250px] flex justify-between overflow-hidden'>
                     <div className='h-[35px] w-[300px '>
                         <h3 className='text-2xl font-normal'>Best Of <span className='font-bold'>boAt</span></h3>
                         <div className='md:w-6 bg-red-600 h-0.5 ml-[113px]'></div>
@@ -58,8 +58,8 @@ function Bestofboat() {
                         <div className='flex font-bold  text-center text-[#2f5b97]'>View All <IoArrowForwardCircleOutline className='font-bold ml-1 mt-1 text-center' /></div>
                     </div>
                 </div>
-                <div className='w-[1195px] h-[60px] bg-white ml-10'>
-                    <div className='w-[1195px] h-[60px]  pt-4'>
+                <div className='w-[1195px] h-[60px] bg-white '>
+                    <div className='w-[1195px] h-[60px]  pt-4 flex justify-start'>
                         <button
                             className={activeButtonIndex === 0 ? " bg-[#ecf0f4] rounded-[18px] w-[126px] h-[32px] bg-none text-black mr-2 font-bold " : "  bg-white w-[123px] h-[32px] bg-none text-[#696868] mr-2 "}
                             onClick={() => setActiveButtonIndex(0)}
@@ -90,273 +90,341 @@ function Bestofboat() {
                 </div>
             </div>
 
-            <div id='divblocks' className='w-[1400px] h-[400px] '>
-                <div className={activeButtonIndex === 0 ? 'w-[100%]  h-[400px]  block' : 'hidden'}>
-                    <div className='w-full h-96 mt-2'>
-                        <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
+            <div id='divblocks' className=' overflow-x-scroll no-scrollbar w-full h-[400px] '>
+                <div className={activeButtonIndex === 0 ? ' w-[1250px]  h-[400px]  block' : 'hidden'}>
+                    <div className='w-full h-96 mt-2 overflow-x-scroll no-scrollbar'>
+                        <div className='w-full h-96  xl:ml-10 ml-2 flex justify-between '>
                             <Itemstr
+                                
                                 image={bs1}
                                 usp='40 Hours Playback'
                                 offer='Engraving Available'
-                                name='Airdopes 161'
+                                itemName='Airdopes 161'
                                 price='999'
                                 discount='60%off'
-                                beforedisprice='2,490'
+                                priceBefore='2,490'
                                 //   colors='+5'
                                 rating='4.9'
                                 number='150'
+                                productid='boboat1'
+                                count='0'
+                                category='ear_buds'
                             />
 
                             <Itemstr
+                                productid='boboat2'
                                 offer='Engraving Available'
                                 image={bs2}
                                 usp='40 Hours Playback'
-                                name='Airdopes 131 pro'
+                                itemName='Airdopes 131 pro'
                                 price='999'
                                 discount='67%off'
-                                beforedisprice='2,990'
+                                priceBefore='2,990'
                                 //   colors='+5'
                                 rating='4.9'
-                                number='182' />
+                                number='182'
+                                category='ear_buds'
+                                count='0'
+                            />
                             <Itemstr
+                                productid='boboat3'
                                 offer='false'
                                 image={bs3}
                                 usp='BT Calling'
-                                name='Wave Flex Connect'
-                                price='1,499'
+                                itemName='Wave Flex Connect'
+                                price='1499'
                                 discount='81%off'
-                                beforedisprice='7,990'
+                                priceBefore='7,990'
                                 //    colors='+5'
                                 rating='4.8'
-                                number='31' />
+                                number='31'
+                                category='ear_buds'
+                                count='0' />
                             <Itemstr
+                                productid='boboat4'
                                 offer='&#8377;200 OFF ON BIG200'
                                 image={bs4}
                                 usp='42 Hours Playback'
-                                name='Airdopes 141'
-                                price='1,299'
+                                itemName='Airdopes 141'
+                                price='1299'
                                 discount='71%off'
-                                beforedisprice='4,490'
+                                priceBefore='4,490'
                                 //    colors='+5'
                                 rating='4.9'
-                                number='647' />
+                                number='647'
+                                category='ear_buds'
+                                count='0' />
                         </div>
                     </div>
 
 
                 </div>
 
-                <div className={activeButtonIndex === 1 ? 'w-[100%] h-[400px]  block' : 'hidden'}>
+                <div className={activeButtonIndex === 1 ? 'w-[1250px] h-[400px]  block' : 'hidden'}>
                     <div className='w-full h-96 mt-2'>
-                        <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
+                        <div className='w-[1185px] h-96  xl:ml-10 ml-2 flex justify-between overflow-hidden'>
                             <Itemstr
+                                productid='boboat4'
                                 image={ht1}
                                 usp='60W Rms Sound'
                                 offer='Engraving Available'
-                                name='Aavante Bar 1150'
-                                price='5,299'
+                                itemName='Aavante Bar 1150'
+                                price='5299'
                                 discount='47%off'
-                                beforedisprice='9,990'
+                                priceBefore='9,990'
                                 //   colors='+5'
                                 rating='5.0'
                                 number='1'
+                                category='home_theater'
+                                count='0'
                             />
 
                             <Itemstr
+                                productid='boboat6'
                                 offer='false'
                                 image={ht2}
                                 usp='60W Rms Sound'
-                                name='Aavante Bar Rhythm'
-                                price='4,999'
+                                itemName='Aavante Bar Rhythm'
+                                price='4999'
                                 discount='37%off'
-                                beforedisprice='7,990'
+                                priceBefore='7,990'
                                 //   colors='+5'
                                 rating='firstuser'
-                                number='182' />
+                                number='182' 
+                                category='home_theater'
+                                count='0'/>
                             <Itemstr
+                                productid='boboat7'
                                 offer='false'
                                 image={ht3}
                                 usp='160W Rms Sound'
-                                name='Aavante Bar Raga'
-                                price='5,499'
+                                itemName='Aavante Bar Raga'
+                                price='5499'
                                 discount='66%off'
-                                beforedisprice='15,990'
+                                priceBefore='15,990'
                                 //    colors='+5'
                                 rating='firstuser'
-                                number='31' />
+                                number='31' 
+                                category='home_theater'
+                                count='0'/>
                             <Itemstr
+                                productid='boboat8'
                                 offer='&#8377;200 OFF ON BIG200'
                                 image={ht4}
                                 usp='16W Rms Sound'
-                                name='Aavante Bar 558'
-                                price='2,199'
+                                itemName='Aavante Bar 558'
+                                price='2199'
                                 discount='45%off'
-                                beforedisprice='3,990'
+                                priceBefore='3,990'
                                 //    colors='+5'
                                 rating='firstuser'
-                                number='647' />
+                                number='647'
+                                category='home_theater'
+                                count='0' />
                         </div>
                     </div>
                 </div>
 
-                <div className={activeButtonIndex === 2 ? 'w-[100%]  h-[400px]  block' : 'hidden'}>
+                <div className={activeButtonIndex === 2 ? 'w-[1250px]  h-[400px]  block' : 'hidden'}>
                     <div className='w-full h-96 mt-2'>
-                        <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
+                        <div className='w-[1185px] h-96  xl:ml-10 ml-2 flex justify-between overflow-hidden'>
                             <Itemstr
+                             productid='boboat9'
                                 image={te1}
                                 usp='40 Hours Playback'
                                 offer='false'
-                                name='Airdopes Atom 81'
-                                price='1,099'
+                                itmName='Airdopes Atom 81'
+                                price='1099'
                                 discount='69%off'
-                                beforedisprice='3,490'
+                                priceBefore='3,490'
                                 //   colors='+5'
                                 rating='5.0'
                                 number='11'
+                                category='top_earbuds'
+                                count='0'
                             />
 
                             <Itemstr
+                             productid='boboat10'
                                 offer='false'
                                 image={te2}
                                 usp='Clear Calling'
-                                name='Airdopes 115'
-                                price='1,299'
+                                itemName='Airdopes 115'
+                                price='1299'
                                 discount='57%off'
-                                beforedisprice='2,990'
+                                priceBefore='2,990'
                                 //   colors='+5'
                                 rating='4.9'
-                                number='104' />
+                                number='104'
+                                category='top_earbuds'
+                                count='0'
+                                 />
                             <Itemstr
+                             productid='boboat11'
                                 offer='false'
                                 image={te3}
                                 usp='Gaming Earbuds'
-                                name='Airdopes 191G'
-                                price='1,399'
+                                itemName='Airdopes 191G'
+                                price='1399'
                                 discount='60%off'
-                                beforedisprice='3,490'
+                                priceBefore='3,490'
                                 //    colors='+5'
                                 rating='4.9'
-                                number='58' />
+                                number='58'
+                                category='top_earbuds'
+                                count='0'
+                                 />
                             <Itemstr
+                             productid='boboat12'
                                 offer='false'
                                 image={te4}
                                 usp='20 Hours Playback'
-                                name='Airdopes 383'
-                                price='2,999'
+                                itemName='Airdopes 383'
+                                price='2999'
                                 discount='71%off'
-                                beforedisprice='4,990'
+                                priceBefore='4,990'
                                 //    colors='+5'
                                 rating='4.7'
-                                number='6' />
+                                number='6'
+                                category='top_earbuds'
+                                count='0'
+                                 />
                         </div>
                     </div>
                 </div>
 
-                <div className={activeButtonIndex === 3 ? 'w-[100%]  h-[400px]  block' : 'hidden'}>
+                <div className={activeButtonIndex === 3 ? 'w-[1250px]  h-[400px]  block' : 'hidden'}>
 
                     <div className='w-full h-96 mt-2'>
-                        <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
+                        <div className='w-[1185px] h-96 xl:ml-10 ml-2 flex justify-between overflow-hidden'>
                             <Itemstr
+                             productid='boboat13'
                                 image={tw1}
                                 usp='BT Calling'
                                 offer='false'
-                                name='Lunar Connect'
-                                price='1,799'
+                                itemName='Lunar Connect'
+                                price='1799'
                                 discount='78%off'
-                                beforedisprice='7,999'
+                                priceBefore='7,999'
                                 //   colors='+5
                                 rating='4.9'
                                 number='15'
+                                category='top_watches'
+                                count='0'
                             />
 
                             <Itemstr
+                             productid='boboat14'
                                 offer='false'
                                 image={tw2}
                                 usp='BT Calling'
-                                name='Storm Call'
-                                price='1,499'
+                                itemName='Storm Call'
+                                price='1499'
                                 discount='81%off'
-                                beforedisprice='7,990'
+                                priceBefore='7,990'
                                 //   colors='+5'
                                 rating='4.8'
-                                number='27' />
+                                number='27' 
+                                category='top_watches'
+                                count='0'
+                                />
                             <Itemstr
+                             productid='boboat15'
                                 offer='false'
                                 image={tw3}
                                 usp='Health Monitoring'
-                                name='Wave Lite'
+                                itemName='Wave Lite'
                                 price='1,799'
                                 discount='74%off'
-                                beforedisprice='6,990'
+                                priceBefore='6,990'
                                 //    colors='+5'
                                 rating='4.9'
-                                number='61' />
+                                number='61' 
+                                category='top_watches'
+                                count='0'
+                                />
                             <Itemstr
+                             productid='boboat16'
                                 offer='false'
                                 image={tw4}
                                 usp='BT Calling'
-                                name='Wave Call'
+                                itemName='Wave Call'
                                 price='1,699'
                                 discount='79%off'
-                                beforedisprice='7,990'
+                                priceBefore='7,990'
                                 //    colors='+5'
                                 rating='4.9'
-                                number='49' />
+                                number='49' 
+                                category='top_watches'
+                                count='0'/>
                         </div>
                     </div>
 
 
                 </div>
 
-                <div className={activeButtonIndex === 4 ? 'w-[100%]  h-[400px]  block' : 'hidden'}>
+                <div className={activeButtonIndex === 4 ? 'w-[1250px]  h-[400px]  block' : 'hidden'}>
                     <div className='w-full h-96 mt-2'>
-                        <div className='w-[1185px] h-96  ml-10 flex justify-between overflow-hidden'>
+                        <div className='w-[1185px] h-96  xl:ml-10 ml-2 flex justify-between overflow-hidden'>
                             <Itemstr
+                             productid='boboat17'
                                 image={ca1}
                                 usp='none'
                                 offer='false'
-                                name='Qc Car Charger'
+                                itemName='Qc Car Charger'
                                 price='499'
                                 discount='50%off'
-                                beforedisprice='999'
+                                priceBefore='999'
                                 //   colors='+5
                                 rating='4.9'
                                 number='15'
+                                category='car_access'
+                                count='0'
+
                             />
 
                             <Itemstr
+                             productid='boboat18'
                                 offer='false'
                                 image={ca2}
                                 usp='BT Calling'
-                                name='Turbo Car Charger'
+                                itemName='Turbo Car Charger'
                                 price='499'
                                 discount='50%off'
-                                beforedisprice='999'
+                                priceBefore='999'
                                 //   colors='+5'
                                 rating='4.9'
-                                number='13' />
+                                number='13' 
+                                category='car_access'
+                                count='0'/>
                             <Itemstr
+                             productid='boboat19'
                                 offer='false'
                                 image={ca3}
                                 usp='Health Monitoring'
-                                name='F Type Car Charger'
+                                itemName='F Type Car Charger'
                                 price='499'
                                 discount='50%off'
-                                beforedisprice='999'
+                                priceBefore='999'
                                 //    colors='+5'
                                 rating='5.0'
-                                number='3' />
+                                number='3' 
+                                category='car_access'
+                                count='0'/>
                             <Itemstr
+                             productid='boboat20'
                                 offer='false'
                                 image={ca4}
                                 usp='Quick Charger 3.0'
-                                name='Rapid Car Charger'
+                                itemName='Rapid Car Charger'
                                 discount='33%off'
-                                beforedisprice='899'
+                                priceBefore='899'
                                 //    colors='+5'
                                 rating='4.9'
                                 price='499'
-                                number='15' />
+                                number='15' 
+                                category='car_access'
+                                count='0'/>
                         </div>
                     </div>
 
@@ -365,7 +433,8 @@ function Bestofboat() {
 
 
             </div>
-        </div>
+
+        </>
     )
 }
 

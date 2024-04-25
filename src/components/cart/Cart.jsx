@@ -5,25 +5,22 @@ import CartProductTemp from './CartProductTemp';
 import testimg from './testimg1.jpg'
 import Cartt from '../../context/CartCon';
 import { useState, useEffect } from 'react';
+import CheckoutModal from '../../others/CheckoutModal';
+
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 
 
 function Cart() {
 
     const { cart, cartTotal } = useContext(Cartt)
     const [total, setTotal] = useState()
-
-
+    const [handleCheckoutModal, setHandleCheckoutModal] = useState(false)
     let x = cart.length;
 
     function removeComma(number) {
         return number.replace(/,/g, '');
     }
-
-    //    function renderUniqueProducts(cart) {
-    //         uniqueProducts = cart.filter((product, index) => {
-    //             return cart.indexOf(product) === index;
-    //         })
-    //     };
 
     function addComma(number) {
         if (typeof number !== 'number') {
@@ -31,6 +28,15 @@ function Cart() {
         }
         return number.toLocaleString();
     }
+
+    function handleConfirmBtn(){
+        setHandleCheckoutModal(!handleCheckoutModal)
+    }
+
+    const handleCheckoutModalBtn = () => {
+        setHandleCheckoutModal(!handleCheckoutModal)
+    }
+
     useEffect(() => {
         setTotal(cart.reduce((acc, curr) => Number(acc) + Number(curr.grandtotal), 0));
     }, [cart, cartTotal]);
@@ -39,14 +45,18 @@ function Cart() {
     return (
         <>
 
-            <div id='cartdiv' className='w-[70%] md:w-[30%] h-[100%] fixed top-0 right-0 bg-white scroll'>
+
+            {
+                handleCheckoutModal &&
+                <CheckoutModal closeFunc={handleCheckoutModalBtn} />
+            }
+            <div id='cartdiv' className='w-[70%] md:w-[30%] h-[100%] z-[110]  absolute top-0 right-0 bg-white scroll '>
 
                 {
-
                     x === 0 ? <div className='w-[100%] h-[300px]  overflow-hidden mt-[150px]'>
                         <div className='h-[50%] w-[100%]  m-auto text-[150px]'><LuShoppingBag className='m-auto text-[rgb(26,32,36)]' /></div>
-                        <div className='overflow-hidden h-[20%]  text-black font-bold text-xl mt-4  tracking-wider bg-blue-200 flex items-center justify-center text-center'><p>Your cart is feeling lonely</p></div>
-                        <div className='h-[30%] w-[100%] flex justify-center items-center bg-blue-300'>
+                        <div className='overflow-hidden h-[20%]  text-black font-bold text-xl mt-4  tracking-wider  flex items-center justify-center text-center'><p>Your cart is feeling lonely</p></div>
+                        <div className='h-[30%] w-[100%] flex justify-center items-center '>
                             <Link to='/'>
                                 <button onClick={() => alert(x)} id='startshoppingbtn' className='bg-[rgb(26,32,36)] text-white h-[100%] w-[200px] font-bold rounded-md '>Start Shopping</button>
                             </Link>
@@ -77,7 +87,7 @@ function Cart() {
                                     <span className='text-sm'>Inclusive of all taxes</span>
                                 </div>
                                 <div className='w-[55%] m-auto'>
-                                    <button className='h-[50px] bg-black w-[95%] rounded-md text-center font-bold text-white'>Confirm Order</button>
+                                    <button className='h-[50px] bg-black w-[95%] rounded-md text-center font-bold text-white' onClick={handleConfirmBtn}>Confirm Order</button>
                                 </div>
 
                             </div>

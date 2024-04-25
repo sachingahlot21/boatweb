@@ -5,9 +5,18 @@ import { Link } from 'react-router-dom';
 import images from './images/images';
 import CatTemplate from './CatTemplate';
 import Cartt from '../../context/CartCon';
-
+import LoginModal from '../../others/LoginModal';
+// import { useContext } from 'react';
+import Search from '../../context/SearchCon'
+import { LoginDetailContext } from '../../context/LoginDetailCon';
+import SearchContext from '../../context/SearchContext';
 
 function Navbar() {
+    const { loggedIn } = useContext(LoginDetailContext)
+    const { setUserEmail, setLoggedIn } = useContext(LoginDetailContext)
+    const { userName, userEmail } = useContext(LoginDetailContext)
+    const { searchQuery } = useContext(Search);
+    const { setSearchQuery } = useContext(Search)
     const [activelogin, setLogin] = useState('hidden')
     const [activecart, setCart] = useState('hidden')
     const [catmenu, setCatmenu] = useState('hidden')
@@ -15,6 +24,8 @@ function Navbar() {
     const { cart, cartTotal } = useContext(Cartt)
     const [handleCatPlus, setCatPlus] = useState(false)
     const [handleMoreBtn, setMoreBtn] = useState(false)
+    const [handleLoginModal, setHandleLoginModal] = useState(false)
+    const [searchValue, setSearchValue] = useState('');
     let cartSize = cart.length
 
     let catbtnresult;
@@ -45,6 +56,13 @@ function Navbar() {
 
     const handleMobileBar = () => {
         setactiveMobileBar(activeMobileBar === 'hidden' ? 'block' : 'hidden');
+    }
+    const handleLoginModalBtn = () => {
+        if (loggedIn) {
+            setLoggedIn(false)
+            return
+        }
+        setHandleLoginModal(!handleLoginModal)
     }
     // if(catmenu) {
     //     catbtnresult = 'block' ;
@@ -111,12 +129,31 @@ function Navbar() {
             document.removeEventListener('mousedown', catDropDownHandler)
         }
     });
+    useEffect(() => {
+        setSearchQuery(searchValue)
+    }, [searchValue])
 
+    const handleSearch = (e) => {
+        // Filter the array data based on the search query
+        // setSearchQuery(e.target.value)
+        setSearchValue(e.target.value)
+
+    };
+
+    const handleChange = (e) => {
+
+    };
 
 
     return (
         <>
-            <div className='overflow-x-hidden md:block md:w-screen md:h-31 fixed z-[110] border-b-[2px] border-inherit bg-white'>
+
+
+            {
+                handleLoginModal &&
+                <LoginModal closeFunc={handleLoginModalBtn} />
+            }
+            <div className='overflow-x-hidden md:block md:w-screen md:h-31 fixed z-[50] border-b-[2px] border-inherit bg-white'>
 
                 <div className='w-screen bg-[#eff4f7] h-10 text-center pt-1 md:pt-2'>
                     <p className='text-xs px-1'>
@@ -157,7 +194,8 @@ function Navbar() {
                     </div>
                     {/* search and car div */}
                     <div className='flex items-center   pl-8 md:w-2/6 md:justify-around'>
-                        <input type='text' className=' h-10 w-72 border-none bg-[#eff4f7]  rounded-full ' placeholder='search HEADPHONE'></input>
+                        <input type='text' value={searchValue}
+                            onChange={handleSearch} className=' h-10 w-72 border-none bg-[#eff4f7]  rounded-full pl-2 ' placeholder='search'></input>
                         <button onClick={handleLogin} className='' ref={loginbtnref} > <img className='h-6 w-6 mx-1' src='https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Profile-1.png?v=1663762989'></img></button>
                         <div className='h-9 w-9 flex justify-center items-center mx-2 md:mr-10   relative'>
                             <button onClick={handleCartBtn} className=''><img className='h-6 w-6  md:mr-10 ' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGk0Y0kImP97Bg5pv782NGYj6jFqRNSpu4eQ&usqp=CAU'></img>
@@ -175,15 +213,27 @@ function Navbar() {
                     </div>
                 </div>
             </div>
-            <div id='loginBtn' className={`w-[218px] h-[84px] bg-white fixed top-[110px] border-solid border-grey-300 border-2 shadow-xl shadow-slate-400 rounded-xl block right-2 z-50 ${activelogin} `} ref={loginref}>
+
+            {/* <div id='loginBtn' className={`w-[218px] h-[84px] bg-white fixed top-[110px] border-solid border-grey-300 border-2 shadow-xl shadow-slate-400 rounded-xl block right-2 z-50 ${activelogin} `} ref={loginref}>
                 <div className='flex justify-between'>
                     <div className='ml-2 mt-1 text-sm font-bold'><p>Hi boAThead!</p></div>
                     <div className='mr-2'><button onClick={handleLoginBtn}><MdOutlineCancel className='mt-1 text-xl font-bold' /></button></div>
                 </div>
                 <div className='w-[200px] h-[35px] mt-3 m-auto  '>
-                    <button className='bg-black w-[200px] h-[35px] text-white rounded-md text-sm font-bold'>Login</button>
+                    <button className='bg-black w-[200px] h-[35px] text-white rounded-md text-sm font-bold' onClick={handleLoginModalBtn}>Login</button>
+                </div>
+            </div> */}
+
+            <div id='loginBtn' className={`w-[218px] h-[84px] bg-white fixed top-[110px] border-solid border-grey-300 border-2 shadow-xl shadow-slate-400 rounded-xl block right-2 z-50 ${activelogin} `} ref={loginref}>
+                <div className='flex justify-between'>
+                    <div className='ml-2 mt-1 text-sm font-bold'><p>Hi {loggedIn ? `${userName}` : "boAthead!"}</p></div>
+                    <div className='mr-2'><button onClick={handleLoginBtn}><MdOutlineCancel className='mt-1 text-xl font-bold' /></button></div>
+                </div>
+                <div className='w-[200px] h-[35px] mt-3 m-auto  '>
+                    <button className='bg-black w-[200px] h-[35px] text-white rounded-md text-sm font-bold' onClick={handleLoginModalBtn}>{loggedIn ? "Logout" : "Login"}</button>
                 </div>
             </div>
+
             <div className={`md:hidden bg-opacity-30 left-0  w-[100vw] h-[100vh] z-[100] bg-black fixed pt-[10vh]   ${activeMobileBar}`}>
                 <div className='w-[80%] h-[100%] bg-white z-[100]'>
                     <div className=' w-[100%] h-auto '>
