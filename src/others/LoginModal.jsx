@@ -96,7 +96,7 @@ export default function LoginModal({ closeFunc }) {
             }
         })
 
-        signInWithPhoneNumber(auth, '+918053441757', window.recaptchaVerifier)
+        signInWithPhoneNumber(auth, '+919818093263', window.recaptchaVerifier)
             .then((confirmationResult) => {
                 window.confirmationResult = confirmationResult;
                 setOpen(false),
