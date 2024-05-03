@@ -33,7 +33,7 @@ function Main() {
             image={newlaunch1}
             usp='16W RMS Sound'
             offer='New Launch'
-            name='Aavante Bar 558'
+            itemName='Aavante Bar 558'
             price='2199'
             discount='45%off'
             priceBefore='3,990'
@@ -49,7 +49,7 @@ function Main() {
             offer='New Launch'
             image={newlaunch2}
             usp='12 Hours Playback'
-            name='Stone 750'
+            itemName='Stone 750'
             price='2199'
             discount='63%off'
             priceBefore='5,990'
@@ -59,29 +59,29 @@ function Main() {
             productid='newlaunch2'
             count='0'
             category='new_launch2'
-            />
+          />
 
           <Itemstr
             offer='New Launch'
             image={newlaunch3}
             usp='AMOLED Display'
-            name='Lunar Peak'
+            itemName='Lunar Peak'
             price='2699'
             discount='61%off'
             priceBefore='6,999'
             //    colors='+5'
             rating='firstuser'
-            number='1074' 
+            number='1074'
             productid='newlaunch3'
             count='0'
             category='new_launch3'
-            />
+          />
 
           <Itemstr
             offer='New Launch'
             image={newlaunch4}
             usp='40 Hours Playback'
-            name='Airdopes 71'
+            itemName='Airdopes 71'
             price='1199'
             discount='70%off'
             priceBefore='3,990'
@@ -91,7 +91,7 @@ function Main() {
             productid='newlaunch4'
             count='0'
             category='new_launch4'
-             />
+          />
         </div>
       </div>
 

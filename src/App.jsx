@@ -47,7 +47,7 @@ function App() {
 
 
       <div className={showResult ? 'block' : 'hidden'}>
-        <SearchData />
+        <SearchData  />
       </div>
 
 

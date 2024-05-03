@@ -48,7 +48,7 @@ function Cart() {
 
             {
                 handleCheckoutModal &&
-                <CheckoutModal closeFunc={handleCheckoutModalBtn} />
+                <CheckoutModal subTotal={total} closeFunc={handleCheckoutModalBtn} />
             }
             <div id='cartdiv' className='w-[70%] md:w-[30%] h-[100%] z-[110]  absolute top-0 right-0 bg-white scroll '>
 
@@ -56,9 +56,9 @@ function Cart() {
                     x === 0 ? <div className='w-[100%] h-[300px]  overflow-hidden mt-[150px]'>
                         <div className='h-[50%] w-[100%]  m-auto text-[150px]'><LuShoppingBag className='m-auto text-[rgb(26,32,36)]' /></div>
                         <div className='overflow-hidden h-[20%]  text-black font-bold text-xl mt-4  tracking-wider  flex items-center justify-center text-center'><p>Your cart is feeling lonely</p></div>
-                        <div className='h-[30%] w-[100%] flex justify-center items-center '>
+                        <div className='h-[30%] w-[100%]  flex justify-center items-center '>
                             <Link to='/'>
-                                <button onClick={() => alert(x)} id='startshoppingbtn' className='bg-[rgb(26,32,36)] text-white h-[100%] w-[200px] font-bold rounded-md '>Start Shopping</button>
+                                <button onClick={() => alert(x)} id='startshoppingbtn' className='bg-[rgb(26,32,36)] text-white h-[60px] w-[200px] font-bold rounded-md '>Start Shopping</button>
                             </Link>
 
                         </div>

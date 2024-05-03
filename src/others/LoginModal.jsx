@@ -22,13 +22,14 @@ const style = {
 
 export default function LoginModal({ closeFunc }) {
     const { setUserName } = useContext(LoginDetailContext)
-    const { setUserEmail,setLoggedIn } = useContext(LoginDetailContext)
-    const {userName, userEmail} = useContext(LoginDetailContext)
+    const { setUserEmail, setLoggedIn } = useContext(LoginDetailContext)
+    const { userName, userEmail } = useContext(LoginDetailContext)
 
     const [open, setOpen] = React.useState(true);
     const [open2, setOpen2] = React.useState(false);
     const [open3, setOpen3] = React.useState(false)
     const [PhoneNo, setPhoneNo] = React.useState("")
+    
 
     const [otp, setOtp] = useState('')
 
