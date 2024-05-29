@@ -31,9 +31,10 @@ useEffect(()=>{
              let b = document.getElementById('btn1id')
              b.style.backgroundColor = "white";
              counter++;
+             //TEST
          }
          else if (counter == 2) {
-            console.log(btn2.value)
+            
             let z =  document.getElementById('first')
             z.style.marginLeft = '-100vw';
             let b = document.getElementById('btn2id')
@@ -41,7 +42,7 @@ useEffect(()=>{
              counter++;
          }
          else if (counter == 3) {
-            console.log(btn2.value)
+           
             let z =  document.getElementById('first')
             z.style.marginLeft = '-200vw';
             let b = document.getElementById('btn3id')
@@ -49,7 +50,7 @@ useEffect(()=>{
             counter++;
          }
          else if(counter == 4) {
-            console.log(btn2.value)
+           
             let z =  document.getElementById('first')
             z.style.marginLeft = '-300vw';
             let b = document.getElementById('btn4id')
@@ -86,14 +87,14 @@ useEffect(()=>{
              b.style.backgroundColor = "white";
          }
         if (btn2.checked) {
-           console.log(btn2.value)
+      
            let z =  document.getElementById('first')
            z.style.marginLeft = '-100vw';
            let b = document.getElementById('btn2id')
             b.style.backgroundColor = "white";
         }
         if (btn3.checked) {
-            console.log(btn2.value)
+           
             let z =  document.getElementById('first')
             z.style.marginLeft = '-200vw';
             let b = document.getElementById('btn3id')

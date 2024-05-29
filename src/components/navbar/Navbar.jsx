@@ -168,7 +168,8 @@ function Navbar() {
                                 activeMobileBar === 'hidden' ?
                                     <img className='overflow-clip w-7 h-7' src='https://cdn.iconscout.com/icon/free/png-512/free-menu-7688655-6391120.png?f=webp&w=512' />
                                     :
-                                    <img className='overflow-clip w-[30px] h-[30px]' src='https://cdn.iconscout.com/icon/free/png-512/free-cross-275-458716.png?f=webp&w=512' />
+                                    ''
+                                // <img className='overflow-clip w-[30px] h-[30px]' src='https://cdn.iconscout.com/icon/free/png-512/free-cross-275-458716.png?f=webp&w=512' />
                             }
                         </button>
                     </div>
@@ -234,14 +235,17 @@ function Navbar() {
                 </div>
             </div>
 
-            <div className={`md:hidden bg-opacity-30 left-0  w-[100vw] h-[100vh] z-[100] bg-black fixed pt-[10vh]   ${activeMobileBar}`}>
+            <div className={`md:hidden bg-opacity-30 left-0  w-[100vw] h-[100vh] z-[100] bg-black fixed    ${activeMobileBar}`}>
                 <div className='w-[80%] h-[100%] bg-white z-[100]'>
                     <div className=' w-[100%] h-auto '>
+                        <div className='w-[100%] flex justify-end pr-2 h-12 text-3xl'>
+                            <button onClick={()=>setactiveMobileBar('hidden')}><MdOutlineCancel /></button>
+                        </div>
                         <div onClick={handleCatPlusFun} className='p-4 w-[100%] h-[8vh]  flex justify-between'>
                             <h1 className='font-bold'>Categories</h1>
                             <span className='text-3xl flex items-center overflow-y-hidden'>{handleCatPlus ? '-' : '+'}</span>
                         </div>
-                        <div className={`w-[100%] h-[62vh]  p-4 pt-0 flex-wrap gap-2 ${handleCatPlus ? 'flex' : 'hidden'}`} >
+                        <div className={`w-[100%] h-[62vh]  p-4 pt-0 flex-wrap gap-2 ${handleCatPlus ? 'flex' : 'hidden'}`}>
                             <div className='w-[90px] h-[130px] '>
                                 <img className='w-[100%] h-[70%] object-cover' src={images.catimg1}></img>
                                 <h1 className='w-[100%] h-[30%] text-xs  text-center'>True Wireless Earbuds</h1>
@@ -306,13 +310,13 @@ function Navbar() {
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div id='cartBtn' className={`w-[100vw] h-[100vh] bg-black fixed z-50 bg-opacity-30 right-0 ${activecart}`} >
                 <div ref={cartref}>
                     <Cart />
                 </div>
+
             </div>
             <div className={`w-[490px] h-[300px] z-30 border-solid border-[2px] border-slate-200 bg-white fixed left-[50px] top-[120px] ${catmenu}`} ref={catref}>
                 <div>

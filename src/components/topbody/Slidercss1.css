@@ -6,7 +6,6 @@
 
 .slider {
     width: 100vw;
-   
     overflow-x: hidden;
 }
 
@@ -17,8 +16,7 @@
 
 .slides {
     display: flex;
-    width: 500vw;
-    /* //overflow: hidden; */
+    width: 500vw;   /* //overflow: hidden; */
 }
 
 .radiobtn {

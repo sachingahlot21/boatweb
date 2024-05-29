@@ -7,6 +7,7 @@ import Cartt from '../../context/CartCon';
 import { useState, useEffect } from 'react';
 import CheckoutModal from '../../others/CheckoutModal';
 
+
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
@@ -38,6 +39,7 @@ function Cart() {
     }
 
     useEffect(() => {
+        console.log('cart' ,cart)
         setTotal(cart.reduce((acc, curr) => Number(acc) + Number(curr.grandtotal), 0));
     }, [cart, cartTotal]);
 

@@ -5,7 +5,9 @@ import { MdVerified } from "react-icons/md";
 import { RxDividerVertical } from "react-icons/rx";
 import { FcFlashOn } from "react-icons/fc";
 import Cartt from '../../context/CartCon'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import axios from 'axios'
+
 function Itemstr({
     productid,
     image,
@@ -28,21 +30,20 @@ function Itemstr({
     }
 
     const { cart, setCart } = useContext(Cartt)
+    // const [count, setCount] = useState(0);
 
-
-    const handleAddtobtn = (productid) => {
-
+    const handleAddtobtn = async (productid, image, usp, offer, itemName, price, discount, priceBefore,  rating, number) => {
         let existingProduct = cart.find(
-            (curItem) => curItem.productid == productid
-        )
+            (curItem) => curItem.productid === productid
+        );
 
         if (existingProduct) {
-            alert('already in cart')
-            // count = count + 1
-        }
-        else {
-            count = count + 1
-            setCart([...cart, {
+            alert('Already in cart');
+        } else {
+            const newCount = 1;
+            // setCount(newCount);
+
+            const newCartItem = {
                 productid: productid,
                 image: image,
                 usp: usp,
@@ -51,16 +52,62 @@ function Itemstr({
                 price: Number(price),
                 discount: discount,
                 priceBefore: priceBefore,
-                colors: colors,
                 rating: rating,
                 number: number,
-                count: Number(count)
+                count: Number(newCount)
+            };
 
-            }])
+            try {
+                const response = await axios.post('http://localhost:7000/cart', {
+                    items: [newCartItem],
+                    user: 'user_id_placeholder' // Replace with actual user ID
 
+                });
+
+                if (response.status === 201) {
+                    setCart([...cart, newCartItem]);
+                    alert('Item added to cart successfully!');
+                } else {
+                    alert('Failed to add item to cart');
+                }
+            } catch (error) {
+                console.error('Error adding item to cart:', error);
+                alert('Error adding item to cart');
+            }
         }
+    };
 
-    }
+    // const handleAddtobtn = (productid) => {
+
+    //     let existingProduct = cart.find(
+    //         (curItem) => curItem.productid == productid
+    //     )
+
+    //     if (existingProduct) {
+    //         alert('already in cart')
+    //         // count = count + 1
+    //     }
+    //     else {
+    //         count = count + 1
+    //         setCart([...cart, {
+    //             productid: productid,
+    //             image: image,
+    //             usp: usp,
+    //             offer: offer,
+    //             itemName: itemName,
+    //             price: Number(price),
+    //             discount: discount,
+    //             priceBefore: priceBefore,
+    //             colors: colors,
+    //             rating: rating,
+    //             number: number,
+    //             count: Number(count)
+
+    //         }])
+
+    //     }
+
+    // }
 
     return (
         <>
@@ -99,7 +146,7 @@ function Itemstr({
                     </div>
                     <div>
                         <div>{colors}</div>
-                        <div className='w-[108px] h-[40px] mt-8 mr-6' ><button className='w-[106px] h-[39px] bg-black text-white rounded-lg ' onClick={()=>handleAddtobtn(productid,
+                        <div className='w-[108px] h-[40px] mt-8 mr-6' ><button className='w-[106px] h-[39px] bg-black text-white rounded-lg ' onClick={() => handleAddtobtn(productid,
                             image,
                             usp,
                             offer,
@@ -107,7 +154,6 @@ function Itemstr({
                             price,
                             discount,
                             priceBefore,
-                            colors,
                             rating,
                             number,
                             count)}>Add To Cart</button></div>
