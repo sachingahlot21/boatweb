@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaRegThumbsUp } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
@@ -30,9 +30,11 @@ function Itemstr({
     }
 
     const { cart, setCart } = useContext(Cartt)
+   
+
     // const [count, setCount] = useState(0);
 
-    const handleAddtobtn = async (productid, image, usp, offer, itemName, price, discount, priceBefore,  rating, number) => {
+    const handleAddtobtn = async (productid, image, usp, offer, itemName, price, discount, priceBefore, rating, number) => {
         let existingProduct = cart.find(
             (curItem) => curItem.productid === productid
         );
@@ -58,9 +60,9 @@ function Itemstr({
             };
 
             try {
-                const response = await axios.post('http://localhost:7000/cart', {
+                const response = await axios.post('http://localhost:8000/cart', {
                     items: [newCartItem],
-                    user: 'user_id_placeholder' // Replace with actual user ID
+                    user: '60c72b2f9b1e8e35a4d7b0c6' // Replace with actual user ID
 
                 });
 
@@ -77,6 +79,8 @@ function Itemstr({
         }
     };
 
+  
+   
     // const handleAddtobtn = (productid) => {
 
     //     let existingProduct = cart.find(

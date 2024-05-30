@@ -6,6 +6,7 @@ import testimg from './testimg1.jpg'
 import Cartt from '../../context/CartCon';
 import { useState, useEffect } from 'react';
 import CheckoutModal from '../../others/CheckoutModal';
+import axios from 'axios'
 
 
 import Box from '@mui/material/Box';
@@ -34,12 +35,26 @@ function Cart() {
         setHandleCheckoutModal(!handleCheckoutModal)
     }
 
+      const handleGetCartData = async () => {
+        try {
+            const res = await axios.get('http://localhost:8000/cart');
+            console.log(res);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    // useEffect(() => {
+    //     
+    //     console.log("test")
+    // }, []);
+
     const handleCheckoutModalBtn = () => {
         setHandleCheckoutModal(!handleCheckoutModal)
     }
 
     useEffect(() => {
         console.log('cart' ,cart)
+        handleGetCartData();
         setTotal(cart.reduce((acc, curr) => Number(acc) + Number(curr.grandtotal), 0));
     }, [cart, cartTotal]);
 
