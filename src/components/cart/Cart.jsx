@@ -39,6 +39,8 @@ function Cart() {
         try {
             const res = await axios.get('http://localhost:8000/cart');
             console.log(res);
+            const items = res.data.map(i => i.items[0])
+           console.log(items);
         } catch (err) {
             console.error(err);
         }
