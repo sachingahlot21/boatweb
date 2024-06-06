@@ -30,7 +30,7 @@ function Itemstr({
     }
 
     const { cart, setCart } = useContext(Cartt)
-   
+
 
     // const [count, setCount] = useState(0);
 
@@ -67,7 +67,8 @@ function Itemstr({
                 });
 
                 if (response.status === 201) {
-                    setCart([...cart, newCartItem]);
+                    // setCart([...cart, newCartItem]);
+                    handleGetCartData()
                     alert('Item added to cart successfully!');
                 } else {
                     alert('Failed to add item to cart');
@@ -78,9 +79,22 @@ function Itemstr({
             }
         }
     };
+    const handleGetCartData = async () => {
+        try {
+            const res = await axios.get('http://localhost:8000/cart');
+            console.log(res);
+            const items = res.data.map(i => i.items[0])
+            setCart(items);
+            console.log('cc', cart)
+            console.log(items);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    useEffect(() => {
+        handleGetCartData()
+    }, [])
 
-  
-   
     // const handleAddtobtn = (productid) => {
 
     //     let existingProduct = cart.find(

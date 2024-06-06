@@ -15,8 +15,9 @@ import Modal from '@mui/material/Modal';
 
 function Cart() {
 
-    const { cart, cartTotal } = useContext(Cartt)
+    const { cart, cartTotal, setCart } = useContext(Cartt)
     const [total, setTotal] = useState()
+    const[cartt , setCartt] = useState()
     const [handleCheckoutModal, setHandleCheckoutModal] = useState(false)
     let x = cart.length;
 
@@ -31,34 +32,37 @@ function Cart() {
         return number.toLocaleString();
     }
 
-    function handleConfirmBtn(){
+    function handleConfirmBtn() {
         setHandleCheckoutModal(!handleCheckoutModal)
     }
 
-      const handleGetCartData = async () => {
+    const handleGetCartData = async () => {
         try {
             const res = await axios.get('http://localhost:8000/cart');
             console.log(res);
             const items = res.data.map(i => i.items[0])
-           console.log(items);
+            setCartt(items);
+            console.log('cc' , cart)
+            console.log(items);
         } catch (err) {
             console.error(err);
         }
     }
-    // useEffect(() => {
-    //     
-    //     console.log("test")
-    // }, []);
+    useEffect(() => {
+        console.log('cc v' , cart)
+        console.log("test")
+    }, []);
 
     const handleCheckoutModalBtn = () => {
         setHandleCheckoutModal(!handleCheckoutModal)
     }
 
     useEffect(() => {
-        console.log('cart' ,cart)
-        handleGetCartData();
-        setTotal(cart.reduce((acc, curr) => Number(acc) + Number(curr.grandtotal), 0));
-    }, [cart, cartTotal]);
+        console.log('carttt', cartTotal)
+
+        
+        setTotal(cartTotal);
+    }, [cartTotal]);
 
 
     return (
@@ -89,12 +93,16 @@ function Cart() {
                             </div>
 
                             <div className='w-[395px] h-[455px] '>
-
+                              
                                 {
-                                    cart.map((cartitem) => (
+                                    cart.length > 0 && cart.map((cartitem) => (
                                         <CartProductTemp
                                             prop={cartitem}
-                                            key={cartitem.productid} />
+                                            id={cartitem._id}
+                                            key={cartitem._id} 
+                                            getCartData = {handleGetCartData}
+                                            
+                                            />
                                     ))
                                 }
 

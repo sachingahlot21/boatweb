@@ -5,8 +5,9 @@ import Cartt from '../../context/CartCon'
 import { RiSubtractLine } from "react-icons/ri";
 import { IoMdAdd } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import axios from 'axios'
 
-function CartProductTemp({ prop, key }) {
+function CartProductTemp({ prop, id, key, getCartData }) {
 
     const [Count, setCount] = useState(prop.count)
     const [Price, setPrice] = useState(0)
@@ -16,30 +17,60 @@ function CartProductTemp({ prop, key }) {
         alert(prop.grandtotal)
     }
 
-    function handleAddCount() {
-        setCount((prev) => prev + 1)
-        handleCount()
-        setPrice(prop.count * prop.price)
-    }
+    // function handleAddCount() {
+    //     setCount((prev) => prev + 1)
+    //     handleCount()
+    //     setPrice(prop.count * prop.price)
+    // }
 
     useEffect(() => {
         setCount(prop.count)
         setPrice(prop.count * prop.price)
         prop.grandtotal = prop.count * prop.price
-        setCartTotal(prop.grandtotal)
-    }, [prop.count]);
+        console.log("P>G>T" , prop.grandtotal)
+        console.log("c_t" , cartTotal)
+        // setCartTotal('99999')
+        console.log("nan" , cart )
+
+        const grandTotal = cart.reduce((total, item) => {
+            const itemTotal = item.count * item.price;
+            return total + itemTotal;
+        }, 0);
+
+        setCartTotal(grandTotal);
+
+       
+    }, [prop.count , cart]);
 
 
-    // const handleAddCount = (count) => {
+    const handleAddCount = async (id) => {
 
-    //        setCount((prev) => prev + 1) 
-    //        count = count + 1
-    //         setPrice(Number(Price) + Number(price))
 
-    // }
+        axios.put(`http://localhost:8000/cart/increment/${id}`)
+            .then(response => {
+                console.log(response.data);
+                handleGetCartData()
+            })
+            .catch(error => {
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log('Status code:', error.response.status);
+                    console.log('Response data:', error.response.data);
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    console.log('Request:', error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error message:', error.message);
+                }
+            });
+
+
+    }
 
     const handleCount = () => {
-        prop.count = prop.count + 1
+        // prop.count = prop.count + 1
     }
 
     function removeComma(number) {
@@ -51,22 +82,51 @@ function CartProductTemp({ prop, key }) {
         }
         return number.toLocaleString();
     }
-    const handleReduceCount = () => {
-        if (Count > 1) {
 
-            setCount((prev) => prev - 1)
-            prop.count = prop.count - 1
-            setPrice(Number(Price) - prop.price)
+    const handleReduceCount = (item) => {
+        if (item.count > 1) {
+            handleDecrement(item._id);
+        } else {
+            handleRemoveBtn(item._id);
         }
-        else {
-            handleRemoveBtn()
+    };
+
+    const handleDecrement = async (itemId) => {
+        try {
+            const response = await axios.put(`http://localhost:8000/cart/decrement/${itemId}`);
+            console.log(response.data)
+            handleGetCartData()
+        
+        } catch (error) {
+            setError(`Error: ${error.message}`);
+        }
+    };
+
+    const handleGetCartData = async () => {
+        try {
+            const res = await axios.get('http://localhost:8000/cart');
+            console.log(res);
+            const items = res.data.map(i => i.items[0])
+            setCart(items);
+            console.log('cc', cart)
+            console.log(items);
+        } catch (err) {
+            console.error(err);
         }
     }
 
-    const handleRemoveBtn = () => {
-        setCart((prev) => prev.filter((product) => product.productid !== prop.productid))
-        prop.count = 0
-        console.log(cart)
+    const handleRemoveBtn = async (id) => {
+        // setCart((prev) => prev.filter((product) => product.productid !== prop.productid))
+        // prop.count = 0
+        // console.log(cart)
+        try {
+            await axios.delete(`http://localhost:8000/cart/${id}`);
+            console.log("Cart deleted successfully");
+            // Optionally, you can update your cart data after deletion
+            handleGetCartData()
+        } catch (error) {
+            console.error("Error deleting cart:", error);
+        }
     }
 
     return (
@@ -82,16 +142,16 @@ function CartProductTemp({ prop, key }) {
                     &#8377;  {addComma(Price)}
                 </div>
                 <div className='w-[80px]  flex rounded-md border-2 mt-4 '>
-                    <button className='w-[25px] text-center font-bold bg-[rgb(239,243,245)]' onClick={handleReduceCount}><RiSubtractLine className='m-auto' /></button>
+                    <button className='w-[25px] text-center font-bold bg-[rgb(239,243,245)]' onClick={() => handleReduceCount(prop)}><RiSubtractLine className='m-auto' /></button>
                     <div className='h-[25px] w-[30px] text-center font-bold '>
-                        {Count}
+                        {`${Count ? Count : ''}`}
                     </div>
-                    <button className='w-[25px] text-center font-bold bg-[rgb(239,243,245)] ' onClick={handleAddCount}><IoMdAdd className='m-auto' /></button>
+                    <button className='w-[25px] text-center font-bold bg-[rgb(239,243,245)] ' onClick={() => handleAddCount(prop._id)}><IoMdAdd className='m-auto' /></button>
                 </div>
 
             </div>
             <div className='w-[10%]'>
-                <button className='mr-9 mt-2' onClick={handleRemoveBtn}><RiDeleteBin6Line /></button>
+                <button className='mr-9 mt-2' onClick={() => handleRemoveBtn(prop._id)}><RiDeleteBin6Line /></button>
             </div>
             {/* <button onClick={verifyCount}>CHECKKK</button>
             <br></br> */}
