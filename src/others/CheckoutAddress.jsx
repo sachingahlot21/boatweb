@@ -20,7 +20,7 @@ const style = {
 function CheckoutAddress({ cntBtn, addValidFunc }) {
 
     const [pincode, setPincode] = useState()
-    const [isValid, setIsValid] = useState(false)
+    const [isValid, setIsValid] = useState(true)
     const [openProgress, setOpenProgress] = React.useState(false)
     const [city, setCity] = useState('')
     const [stateName, setStateName] = useState('')
@@ -32,33 +32,30 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
 
     const handlePincode = async () => {
         setOpenProgress(true)
+
         const options = {
-            method: 'POST',
-            url: 'https://pincode.p.rapidapi.com/',
+            method: 'GET',
+            url: 'https://india-pincode-api.p.rapidapi.com/v1/in/places/pincode',
+            params: { pincode: pincode },
             headers: {
-                'content-type': 'application/json',
-                'Content-Type': 'application/json',
-                'X-RapidAPI-Key': 'de9c729c89msh88c08711e0bf1bdp19fcb3jsn8218a092d712',
-                'X-RapidAPI-Host': 'pincode.p.rapidapi.com'
-            },
-            data: {
-                searchBy: 'pincode',
-                value: pincode
+                'x-rapidapi-key': 'de9c729c89msh88c08711e0bf1bdp19fcb3jsn8218a092d712',
+                'x-rapidapi-host': 'india-pincode-api.p.rapidapi.com'
             }
         };
 
         try {
             const response = await axios.request(options);
             if (response.status === 200) {
-                setOpenProgress(false)
-                const data = response.data[0];
-                const state = data.circle;
+                 setOpenProgress(false)
+                 console.log(response.data);
+                const data = response.data.result[0];
+                const state = data.statename;
                 if (state) {
                     setStateName(state)
                 } else {
                     console.error("Circle not found in response data:", data);
                 }
-                setCity(data.district)
+                setCity(data.taluk)
 
             }
 
@@ -67,25 +64,20 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
             setOpenProgress(false)
         }
     }
-
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
-
-
     const validateAddress = (address) => {
         return address.length >= 12;
     };
-
-
     const validateFieldsNotEmpty = () => {
         return (
             pincode && city && stateName && userName && userMail && userAddress
         );
     };
-
     const handleContinueBtn = () => {
+        console.log("handleContinueBtn")
         if (!validateEmail(userMail)) {
             alert("Please enter a valid email address.");
             return;
@@ -164,18 +156,13 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
                     <div className='w-[100%] h-[400px]'>
                         <form className='flex flex-wrap flex-col  gap-2'>
                             <input onChange={(e) => setPincode(e.target.value)} className='border-[1px] w-[100%] p-2 h-[50px] rounded-md' type='number' placeholder='Pincode*'></input>
-
                             <div className=' h-[50px] flex  '>
                                 <input value={city} className='border-[1px] w-[49%] p-2 h-[50px] rounded-md' type='text' placeholder='City*'></input>
-
                                 <input value={stateName} className='border-[1px] w-[49%] p-2 h-[50px] rounded-md ml-[9px]' type='text' placeholder='State*'></input>
                             </div>
                             <input onChange={(e) => setUserName(e.target.value)} value={userName} className='border-[1px] w-[100%] p-2  h-[50px] rounded-md' type='text' placeholder='Full Name*'></input>
-
                             <input onChange={(e) => setUserMail(e.target.value)} value={userMail} className='border-[1px] w-[100%] p-2  h-[50px] rounded-md' type='text' placeholder='Email*'></input>
-
                             <input onChange={(e) => setUserAddress(e.target.value)} value={userAddress} className='border-[1px] w-[100%] p-2  h-[50px] rounded-md' type='text' placeholder='Full Address(House no.,Area,etc)*'></input>
-
                             <div className='bg-white flex items-center w-[100%] p-2 h-[50px] rounded-md overflow-hidden'>
                                 <h1>Address Type</h1>
                                 <div className='ml-12 border-[1px] flex items-center justify-center w-[25%] bg-[rgb(250,250,250)]  h-[38px] rounded-md mr-4'>
@@ -187,7 +174,6 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
                                         onChange={handleAddressTypeChange} />
                                     <label className='text-sm' for="home">HOME</label>
                                 </div>
-
                                 <div className='border-[1px] flex items-center justify-center w-[25%]  h-[38px] rounded-md bg-[rgb(250,250,250)]'>
                                     < input className='mr-1' type="radio" id="work" name="address_type" value="WORK" checked={addressType === "WORK"}
                                         onChange={handleAddressTypeChange} />
@@ -198,14 +184,9 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
                                 <label className='mr-2' for='shipping_method'>Shipping method</label> < input className='mt-1 mr-1 flex justify-center items-center' checked type="radio" id="free_shipping" name="free_shipping" value="free_shipping" />
                                 Free shipping @ ₹0
                             </div>
-
-
                         </form>
                     </div>
                 </div>
-
-
-
             </div>
             <div className='  flex justify-center items-center h-[15%] '>
                 {isValid ? (
@@ -221,12 +202,10 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={openProgress}
-
             >
                 <CircularProgress color="inherit" />
             </Backdrop>
         </>
     )
 }
-
 export default CheckoutAddress
