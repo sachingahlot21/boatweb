@@ -17,7 +17,7 @@ const style = {
     p: 4,
 };
 
-function CheckoutAddress({ cntBtn, addValidFunc }) {
+function CheckoutAddress({ cntBtn, addValidFunc,stepTwoColor }) {
 
     const [pincode, setPincode] = useState()
     const [isValid, setIsValid] = useState(true)
@@ -77,7 +77,6 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
         );
     };
     const handleContinueBtn = () => {
-        console.log("handleContinueBtn")
         if (!validateEmail(userMail)) {
             alert("Please enter a valid email address.");
             return;
@@ -101,6 +100,7 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
         console.log(city, stateName, userName, userAddress, userMail, addressType)
 
         cntBtn()
+        stepTwoColor(true)
     }
     useEffect(() => {
 
@@ -118,7 +118,7 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
         }
         else {
             setIsValid(false)
-
+             stepTwoColor(false)
         }
 
     }, [city, stateName, userName, userAddress, userMail, addressType, pincode])

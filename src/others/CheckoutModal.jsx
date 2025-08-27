@@ -453,6 +453,10 @@ function CheckoutModal({ subTotal, closeFunc }) {
     const [finalTotal, setFinalTotal] = useState(subTotal);
     const [addressValid, setAddressValid] = useState(false);
 
+    const [stepOneColor, setStepOneColor] = useState(false)
+    const [stepTwoColor, setStepTwoColor] = useState(false)
+    const [stepThreeColor, setStepThreeColor] = useState(false)
+
     const [showNumberField, setshowNumberField] = useState(true)
     const [isUserVerified, setIsUserVerified] = useState({
         isVerified: false,
@@ -464,6 +468,7 @@ function CheckoutModal({ subTotal, closeFunc }) {
             setPhoneNumber(loggedIn.phone);
             setOriginalPhone(loggedIn.phone);
             setIsOTPVerified(true);
+            setStepOneColor(true)
             setActiveStep(2);
         }
     }, [loggedIn]);
@@ -472,7 +477,6 @@ function CheckoutModal({ subTotal, closeFunc }) {
         setOpen(false);
         closeFunc();
     };
-
 
     const sendOTP = async () => {
         try {
@@ -496,6 +500,7 @@ function CheckoutModal({ subTotal, closeFunc }) {
                 setIsOTPVerified(false);
                 setIsUserVerified({ isVerified: false, verifiedPhoneNumber: null });
                 setshowNumberField(false)
+                setStepOneColor(false)
             } catch (err) {
                 alert(err?.response?.data?.message || "Failed to send OTP");
             }
@@ -518,6 +523,7 @@ function CheckoutModal({ subTotal, closeFunc }) {
             setIsOTPVerified(true);
             setshowNumberField(true)
             setShowOTPField(false)
+            setStepOneColor(true)
             setActiveStep(2);
             setOtp('')
 
@@ -590,16 +596,16 @@ function CheckoutModal({ subTotal, closeFunc }) {
                                     <img src='https://cdn.gokwik.co/merchant/155/logo1632914610996.jpeg' alt='no img'></img>
                                 </div>
                                 <div className='text-sm font-bold flex items-center justify-center w-[90%] h-[100%]'>
-                                    <button onClick={() => setActiveStep(1)} className={`mr-9 ${activeStep === 1 ? 'text-green-600' : 'text-black'} `}>Mobile</button>
-                                    <button disabled={!isOTPVerified} onClick={() => setActiveStep(2)} className={`mr-9 ${activeStep === 2 ? 'text-green-600' : 'text-gray-400'}`} >Address</button>
-                                    <button disabled={!addressValid} onClick={() => setActiveStep(3)} className={`mr-9 ${activeStep === 3 ? 'text-green-600' : 'text-gray-400'}`}>Pay</button>
+                                    <button onClick={() => {setActiveStep(1) }}  className={`mr-9 ${stepOneColor && activeStep!==1 ? 'text-green-600' : 'text-black'} `}>Mobile</button>
+                                    <button disabled={!isOTPVerified || activeStep===1 } onClick={() => setActiveStep(2)} className={`mr-9 ${stepTwoColor && activeStep >= 2 ? 'text-green-600' : 'text-gray-400'}`} >Address</button>
+                                    <button disabled={!addressValid || activeStep===1 || activeStep===2} onClick={() => setActiveStep(3)} className={`mr-9 ${stepThreeColor  ? 'text-green-600' : 'text-gray-400'}`}>Pay</button>
                                 </div>
                             </div>
 
                             <div className='w-[100%]  h-[80%]'>
                                 {
-                                    activeStep === 1 &&
-                                    <div className='w-[100%] h-[100%] flex   flex-col'>
+                                    
+                                    <div style={{ display: activeStep === 1 ? 'block' : 'none' }} className='w-[100%] h-[100%] flex   flex-col'>
                                         {/* <h1 className='text-xl m-auto'>Enter Mobile Number </h1>
                                         <button onClick={handleMobileContinue}>Continue</button> */}
 
@@ -653,14 +659,14 @@ function CheckoutModal({ subTotal, closeFunc }) {
 
 
                                 {
-                                    activeStep === 2 &&
-                                    <div className='w-[100%] h-[100%] '>
-                                        <CheckoutAddress addValidFunc={() => setAddressValid(true)} cntBtn={() => setActiveStep(3)} />
+                                    // activeStep === 2 &&
+                                    <div style={{ display: activeStep === 2 ? 'block' : 'none' }} className='w-[100%] h-[100%] '>                                                            
+                                        <CheckoutAddress addValidFunc={() => setAddressValid(true)} cntBtn={() => setActiveStep(3)  } stepTwoColor = {(x)=> setStepTwoColor(x)} /> 
                                     </div>
                                 }
                                 {
-                                    activeStep === 3 &&
-                                    <div className='w-[100%] h-[100%] flex   flex-col'>
+                                    // activeStep === 3 &&
+                                    <div style={{ display: activeStep === 3 ? 'block' : 'none' }} className='w-[100%] h-[100%] flex   flex-col'>
 
                                         <div className=' mt-20 flex justify-center items-center w-[100%] h-[10%] text-center '>
                                             <h1 className='text-xs font-semibold'>Please select payment method to complete the order
@@ -679,6 +685,9 @@ function CheckoutModal({ subTotal, closeFunc }) {
                                             <div className='w-[234px] h-[68px] bg-green-600 rounded-md'>
                                                 <PaymentComp price='2299' text='Pay via Netbanking' img='none' color='bg-black' />
                                             </div>
+                                        </div>
+                                        <div>
+                                            Cash on Dilivery
                                         </div>
                                     </div>
                                 }
