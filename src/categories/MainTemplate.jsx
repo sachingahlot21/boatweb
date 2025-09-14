@@ -8,6 +8,7 @@ import { FcFlashOn } from "react-icons/fc";
 import { RxDividerHorizontal } from "react-icons/rx";
 import { MdOutlineMaximize } from "react-icons/md";
 import Cartt from '../context/CartCon';
+import axios from 'axios'
 
 function MainTemplate(
     {
@@ -29,31 +30,91 @@ function MainTemplate(
 ) {
     const { cart, setCart } = useContext(Cartt)
     let pp = prop.price
-    
+
+     const handleAddtobtn = async (prop) => {
+        let existingProduct = cart.find(
+            (curItem) => curItem.productid === prop.productid
+        );
+
+        if (existingProduct) {
+            alert('Already in cart');
+        } else {
+            const newCount = 1;
+            // setCount(newCount);
+
+            const newCartItem = {
+                productid: prop.productid,
+                image: prop.image,
+                usp: prop.usp,
+                offer: prop.offer,
+                itemName: prop.itemName,
+                price: Number(prop.price),
+                discount: prop.discount,
+                priceBefore: prop.priceBefore,
+                rating: prop.rating,
+                number: '0001',
+                count: Number(newCount)
+            };
+
+            try {
+                const response = await axios.post('http://localhost:8000/cart', {
+                    items: [newCartItem],
+                    user: '60c72b2f9b1e8e35a4d7b0c6' // Replace with actual user ID
+
+                });
+
+                if (response.status === 201) {
+                    // setCart([...cart, newCartItem]);
+                    handleGetCartData()
+                    alert('Item added to cart successfully!');
+                } else {
+                    alert('Failed to add item to cart');
+                }
+            } catch (error) {
+                console.error('Error adding item to cart:', error);
+                alert('Error adding item to cart');
+            }
+        }
+    };
+
+    const handleGetCartData = async () => {
+        try {
+            const res = await axios.get('http://localhost:8000/cart');
+            console.log(res);
+            const items = res.data.map(i => i.items[0])
+            setCart(items);
+            console.log('cc', cart)
+            console.log(items);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     function addComma(number) {
         if (typeof number !== 'number') {
             return number;
         }
         return number.toLocaleString();
     }
-    
-    const handleAddtobtn = (prop) => {
 
-        let existingProduct = cart.find(
-            (curItem) => curItem.productid == prop.productid
-        )
+    // const handleAddtobtn = (prop) => {
 
-        if (existingProduct) {
-            alert('already in cart')
-            // prop.count = prop.count + 1
-        }
-        else {
-            prop.count = prop.count + 1
-            setCart([...cart, prop])
+    //     const newCartItem = {
+    //         productid: prop.productid,
+    //         image: prop.image,
+    //         usp: prop.usp,
+    //         offer: prop.offer,
+    //         itemName: prop.itemName,
+    //         price: Number(prop.price),
+    //         discount: prop.discount,
+    //         priceBefore: prop.priceBefore,
+    //         rating: prop.rating,
+    //         number: '0001',
+    //         count: Number(prop.newCount)
+    //     };
+    //     console.log(newCartItem)
 
-        }
-
-    }
+    // }
 
     return (
         <>

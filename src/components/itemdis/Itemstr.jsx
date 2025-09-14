@@ -42,7 +42,7 @@ function Itemstr({
         if (existingProduct) {
             alert('Already in cart');
         } else {
-            const newCount = 1;
+            const newCountt = 1;
             // setCount(newCount);
 
             const newCartItem = {
@@ -56,7 +56,7 @@ function Itemstr({
                 priceBefore: priceBefore,
                 rating: rating,
                 number: number,
-                count: Number(newCount)
+                count: Number(newCountt)
             };
 
             try {

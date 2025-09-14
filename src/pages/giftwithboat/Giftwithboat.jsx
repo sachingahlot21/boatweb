@@ -18,23 +18,19 @@ function Giftwithboat() {
                     <img src={giftimg2} alt='no img'></img>
                 </div>
             </div>
-
+            
             <div className='w-[1280px] h-[570px] '>
                 <img src={giftimg3} alt='no img'></img>
             </div>
-
-            <div className='w-[1300px] h-[430px]  flex flex-wrap mt-2'>
-               
+            <div className='w-[1300px] h-[430px]  flex flex-wrap mt-2'>    
                 <div className='w-[620px] h-[420px] overflow-hidden ml-2 mr-2 '>
                     <img className='object-cover' src={giftimg4} alt='no img'></img>
                 </div>
                 <div className='w-[620px] h-[417px] overflow-hidden'>
                     <img src={giftimg5} alt='no img'></img>
                 </div>
-
             </div>
         </div>
     )
 }
-
 export default Giftwithboat

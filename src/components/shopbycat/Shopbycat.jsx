@@ -13,6 +13,7 @@ import charger from './charger.jpg'
 import caracc from './caracc.jpg'
 import limitededitiom from './limitededitiom.jpg'
 import './Shopbycat.css'
+
 function Main() {
   return (
     <>

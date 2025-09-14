@@ -12,31 +12,8 @@ import bfrip4 from './bfrip4.jpg'
 
 function Header() {
 
-    // var countdown = new Date("Jan 10, 2024 00:00:00 ").getTime();
-    // var x = setInterval(function () {
-    //     var now = new Date().getTime();
-    //     var distance = countdown - now;
-    //     var days = Math.floor(distance / (1000 * 60 * 60 * 24))
-    //     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-    //     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-    //     var seconds = Math.floor((distance % (1000 * 60)) / 1000)
-    //     document.getElementById('daysid').innerHTML = days;
-    //     document.getElementById('hoursid').innerHTML = hours;
-    //     document.getElementById('minsid').innerHTML = minutes;
-    //     document.getElementById('secid').innerHTML = seconds;
-    //     if (distance < 0) {
-    //         clearInterval(x)
-    //         document.getElementById('daysid').innerHTML = '00';
-    //         document.getElementById('hoursid').innerHTML = '00';
-    //         document.getElementById('minsid').innerHTML = '00';
-    //         document.getElementById('secid').innerHTML = '00';
-    //     }
-    // }, 1000)
-
-
     return (
         <>
-            {/* heading start from here */}
             <div className='  md:pl-10 pl-2 md:h-10 md:w-full md:mt-1 mt-8   flex justify-between overflow-y-hidden no-scrollbar'>
                 <div>
                     <h3 className='text-2xl font-normal'>Black <span className='font-bold'>Friday</span></h3>
@@ -46,28 +23,15 @@ function Header() {
                     <h3 className='flex font-bold mt-1 ml-2 text-[#2f5b97]'>View All <IoArrowForwardCircleOutline className='font-bold ml-1 mt-1' /></h3>
                 </div>
             </div>
-
-            {/* banner start from here */}
             <div className=' md:w-auto ml-2  w-screen mt-2 md:h-[109px] h-[80px] mr-2 md:mr-5 mb-2 md:ml-10 ml:5 rounded-xl relative'>
-
                 <div className='w-[98%] mr-2  h-[100%] block md:hidden '>
                     <img className='w-[100%]  object-fill   h-[100%] rounded-xl' src={offernewimg2} alt='no img'></img>
                 </div>
                 <div className='md:block md:h-[100%] object-fill hidden md:object-fill'>
                     <img className='w-auto md:h-[100%]' src={offernewimg} alt='no img'></img>
                 </div>
-
-                {/* <div className='md:w-[600px] md:h-[80px] w-[175px] h-[80px] overflow-scroll overflow-x-scroll  text-white absolute top-2 md:left-[400px] left-[105px] md:flex pt-8 font-semibold md:no-scrollbar' >
-                    <h3 className='md:text-2xl text-sm mr-2'>Ending In </h3>
-                    <div className='flex'>
-                        <div className='flex md:text-4xl text-xs font-bold mr-2'><div id='daysid' className='mb-2 overflow-hidden'> 00</div><div className='md:text-2xl text-xs  font-semibold'>Days</div></div>
-                        <div className='flex md:text-4xl text-xs font-bold mr-2'><div id='hoursid' className='mb-2 overflow-hidden'>00</div><div className='md:text-2xl text-xs  font-semibold'>Hours</div></div>
-                        <div className='flex md:text-4xl text-xs font-bold mr-2'><div id='minsid' className='mb-2 overflow-hidden'>00</div><div className='md:text-2xl text-xs  font-semibold'>Mins</div></div>
-                        <div className='flex md:text-4xl text-xs font-bold mr-2'> <div id='secid' className='mb-2 overflow-hidden'>00</div><div className='md:text-2xl  text-xs font-semibold'>Sec</div></div>
-                    </div>
-                </div> */}
             </div>
-            {/* items starts from here */}
+         
             <div className='overflow-y-hidden w-full h-[380px] mt-4 no-scrollbar ml-2 overflow-x-scroll'>
                 <div className='w-[1185px] h-96  md:ml-9 flex justify-between  md:no-scrollbar'>
                     <Itemstr

@@ -21,6 +21,7 @@ const style = {
 };
 
 export default function LoginModal({ closeFunc }) {
+
     const { setUserName } = useContext(LoginDetailContext)
     const { setUserEmail, setLoggedIn } = useContext(LoginDetailContext)
     const { userName, userEmail } = useContext(LoginDetailContext)
@@ -29,12 +30,9 @@ export default function LoginModal({ closeFunc }) {
     const [open2, setOpen2] = React.useState(false);
     const [open3, setOpen3] = React.useState(false)
     const [PhoneNo, setPhoneNo] = React.useState("")
-    
 
     const [otp, setOtp] = useState('')
-
     const handleOpen = () => setOpen(true);
-
     const handleClose = () => {
         setOpen(false)
         setOpen2(true)
@@ -47,15 +45,12 @@ export default function LoginModal({ closeFunc }) {
     const handleClose3 = () => {
         closeFunc()
     }
-
     const handleContinueBtn = () => {
         window.confirmationResult
             .confirm(otp)
             .then(async (res) => {
                 console.log(res);
                 setOtp('');
-                // setOpen2(false)
-                // closeFunc()
                 setOpen3(true)
             })
             .catch((err) => {
@@ -65,28 +60,17 @@ export default function LoginModal({ closeFunc }) {
             });
     }
     const auth = getAuth(app)
-    // React.useEffect(() => {
-
     const handleSubmitBtn = () => {
         setOpen3(false)
         closeFunc()
         setLoggedIn(true)
         alert('submited')
     }
-
-    // }, [])
-
     const handleOtpBtn = () => {
         if (PhoneNo.length < 10) {
             alert("Invalid phoneno.")
             return
         }
-        //    const auth = getAuth(app)
-
-        // const appVerifier = new RecaptchaVerifier('recaptcha-container', {
-        //     size: 'invisible',
-        //     'expired-callback': () => { },
-        // }, auth);
 
 
         window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
@@ -141,24 +125,8 @@ export default function LoginModal({ closeFunc }) {
         setOpen(true)
     }
 
-    // function onCaptchVerify() {
-    //     if (!window.recaptchaVerifier) {
-    //       window.recaptchaVerifier = new RecaptchaVerifier(
-    //         "recaptcha-container",
-    //         {
-    //           size: "invisible",
-
-    //           "expired-callback": () => {},
-    //         },
-    //         auth
-    //       );
-    //     }
-    //   }
-
-
     return (
         <div>
-
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -178,7 +146,6 @@ export default function LoginModal({ closeFunc }) {
                     borderRadius={3}
                     boxShadow={4}
                     sx={{ border: '2px solid grey', style }}>
-
                     <div className='w-[100%] h-[100%]  '>
                         <div className='relative w-[100%] h-[25%] m-auto '>
                             <h1 className='w-[100%] h-[50%] flex text-2xl justify-center items-center'>Get<span className='ml-2 text-2xl font-bold'>started</span></h1>
@@ -187,9 +154,7 @@ export default function LoginModal({ closeFunc }) {
                         </div>
                         <div className='w-[100%] px-24 pt-12 h-[75%] bg-[rgb(239,244,247)] rounded-md flex flex-col pb-2'>
                             <h1 className='text-sm font-semibold'>Enter Mobile Number</h1>
-
                             <input value={PhoneNo} onChange={handleInputChange} className='border-[1px] h-[23%] rounded-md pl-3 mt-2' type='number' placeholder='Type Here' ></input>
-
                             <button onClick={handleOtpBtn} className='m-auto font-bold w-[50%] h-[20%] rounded-md bg-[rgb(208,217,222)]'>SEND OTP</button>
                             <p className='text-[12px] text-center font-semibold'>By Confirming, you agree to boAt's Terms and Conditions and Privacy Policy</p>
                         </div>
@@ -199,10 +164,8 @@ export default function LoginModal({ closeFunc }) {
                             data-size="invisible">
                         </div>
                     </div>
-
                 </Box>
             </Modal>
-
             <Modal
                 open={open2}
                 onClose={handleClose2}
@@ -222,7 +185,6 @@ export default function LoginModal({ closeFunc }) {
                     borderRadius={3}
                     boxShadow={4}
                     sx={{ border: '2px solid grey', style }}>
-
                     <div className='w-[100%] h-[100%]  '>
                         <div className='relative w-[100%] h-[25%] m-auto '>
                             <h1 className='w-[100%] h-[30%] flex text-2xl justify-center items-center'>OTP<span className='ml-2 text-2xl font-bold'>Verification</span></h1>
@@ -231,17 +193,14 @@ export default function LoginModal({ closeFunc }) {
                             <button onClick={handleCloseBtn} className='absolute w-7 h-7 font-semibold text-xs top-0 right-0 bg-[rgb(208,217,222)] rounded-full'>X</button>
                         </div>
                         <div className='w-[100%] px-24 pt-10 h-[75%] bg-[rgb(239,244,247)] rounded-md flex flex-col pb-2'>
-
                             <input className='border-[1px] h-[21%] rounded-md pl-3 mt-2' type='text' placeholder='Type Here' onChange={handleOtpChange}></input>
                             <button className='mx-auto mt-2 font-bold w-[50%] h-[20%] rounded-md bg-[rgb(208,217,222)]' onClick={handleContinueBtn}>Continue</button>
                             <h1 className='mt-4 w-[100%] h-[20%] flex justify-center items-center text-sm text-[rgb(151,160,165)]'>09:55 | Enter the OTP</h1>
                             <p className='mt-4 text-[12px] text-center font-semibold'>By Confirming, you agree to boAt's Terms and Conditions and Privacy Policy</p>
                         </div>
                     </div>
-
                 </Box>
             </Modal>
-
             <Modal
                 open={open3}
                 onClose={handleClose3}
@@ -261,7 +220,6 @@ export default function LoginModal({ closeFunc }) {
                     borderRadius={3}
                     boxShadow={4}
                     sx={{ border: '2px solid grey', style }}>
-
                     <div className='w-[100%] h-[100%]  '>
                         <div className='relative w-[100%] h-[25%] m-auto '>
                             <h1 className='w-[100%] h-[30%] flex text-2xl justify-center items-center'><span className='ml-2 text-2xl font-bold'>Continue with Email ID</span></h1>
@@ -272,16 +230,12 @@ export default function LoginModal({ closeFunc }) {
                         <div className='w-[100%]  pt-1 h-[75%] bg-[rgb(239,244,247)] rounded-md flex flex-col pb-2'>
                             <h1 className='text-sm font-semibold'>Full name</h1>
                             <input className='border-[1px] h-[21%] rounded-md pl-3 mt-2' type='text' placeholder='Type Here' onChange={handleNameChange}></input>
-
                             <h1 className='text-sm font-semibold mt-2'>E-mail</h1>
                             <input className='border-[1px] h-[21%] rounded-md pl-3 mt-2' type='email' placeholder='Type Here' onChange={handleEmailChange}></input>
-
                             <button className='mx-auto mt-2 font-bold w-[40%] h-[20%] rounded-md bg-[rgb(208,217,222)]' onClick={handleSubmitBtn}>Submit</button>
-
                             <p className='mt-4 text-[12px] text-center font-semibold'>By Confirming, you agree to boAt's Terms and Conditions and Privacy Policy</p>
                         </div>
                     </div>
-
                 </Box>
             </Modal>
         </div>

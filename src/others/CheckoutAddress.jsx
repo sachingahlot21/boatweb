@@ -67,24 +67,18 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
             setOpenProgress(false)
         }
     }
-
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
-
-
     const validateAddress = (address) => {
         return address.length >= 12;
     };
-
-
     const validateFieldsNotEmpty = () => {
         return (
             pincode && city && stateName && userName && userMail && userAddress
         );
     };
-
     const handleContinueBtn = () => {
         if (!validateEmail(userMail)) {
             alert("Please enter a valid email address.");
@@ -164,18 +158,13 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
                     <div className='w-[100%] h-[400px]'>
                         <form className='flex flex-wrap flex-col  gap-2'>
                             <input onChange={(e) => setPincode(e.target.value)} className='border-[1px] w-[100%] p-2 h-[50px] rounded-md' type='number' placeholder='Pincode*'></input>
-
                             <div className=' h-[50px] flex  '>
                                 <input value={city} className='border-[1px] w-[49%] p-2 h-[50px] rounded-md' type='text' placeholder='City*'></input>
-
                                 <input value={stateName} className='border-[1px] w-[49%] p-2 h-[50px] rounded-md ml-[9px]' type='text' placeholder='State*'></input>
                             </div>
                             <input onChange={(e) => setUserName(e.target.value)} value={userName} className='border-[1px] w-[100%] p-2  h-[50px] rounded-md' type='text' placeholder='Full Name*'></input>
-
                             <input onChange={(e) => setUserMail(e.target.value)} value={userMail} className='border-[1px] w-[100%] p-2  h-[50px] rounded-md' type='text' placeholder='Email*'></input>
-
                             <input onChange={(e) => setUserAddress(e.target.value)} value={userAddress} className='border-[1px] w-[100%] p-2  h-[50px] rounded-md' type='text' placeholder='Full Address(House no.,Area,etc)*'></input>
-
                             <div className='bg-white flex items-center w-[100%] p-2 h-[50px] rounded-md overflow-hidden'>
                                 <h1>Address Type</h1>
                                 <div className='ml-12 border-[1px] flex items-center justify-center w-[25%] bg-[rgb(250,250,250)]  h-[38px] rounded-md mr-4'>
@@ -187,7 +176,6 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
                                         onChange={handleAddressTypeChange} />
                                     <label className='text-sm' for="home">HOME</label>
                                 </div>
-
                                 <div className='border-[1px] flex items-center justify-center w-[25%]  h-[38px] rounded-md bg-[rgb(250,250,250)]'>
                                     < input className='mr-1' type="radio" id="work" name="address_type" value="WORK" checked={addressType === "WORK"}
                                         onChange={handleAddressTypeChange} />
@@ -198,14 +186,9 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
                                 <label className='mr-2' for='shipping_method'>Shipping method</label> < input className='mt-1 mr-1 flex justify-center items-center' checked type="radio" id="free_shipping" name="free_shipping" value="free_shipping" />
                                 Free shipping @ ₹0
                             </div>
-
-
                         </form>
                     </div>
                 </div>
-
-
-
             </div>
             <div className='  flex justify-center items-center h-[15%] '>
                 {isValid ? (
@@ -221,12 +204,10 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={openProgress}
-
             >
                 <CircularProgress color="inherit" />
             </Backdrop>
         </>
     )
 }
-
 export default CheckoutAddress

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import bulkorderimg1 from './bulkorderimg1.jpg'
 
 function BulkOrder() {
