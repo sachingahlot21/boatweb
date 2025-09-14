@@ -5,6 +5,7 @@ import { MdVerified } from "react-icons/md";
 import { RxDividerVertical } from "react-icons/rx";
 import { FcFlashOn } from "react-icons/fc";
 import Cartt from '../../context/CartCon'
+import { LoginDetailContext } from '../../context/LoginDetailCon';
 import { useContext, useState } from 'react';
 import axios from 'axios'
 
@@ -22,19 +23,17 @@ function Itemstr({
     number,
     count }) {
 
+    const {addToCart} = useContext(Cartt)
+
     function addComma(number) {
         if (typeof number !== 'number') {
             return number
         }
         return number.toLocaleString();
     }
-
-    const { cart, setCart } = useContext(Cartt)
-
-
-    // const [count, setCount] = useState(0);
-
+   
     const handleAddtobtn = async (productid, image, usp, offer, itemName, price, discount, priceBefore, rating, number) => {
+<<<<<<< HEAD
         let existingProduct = cart.find(
             (curItem) => curItem.productid === productid
         );
@@ -78,55 +77,24 @@ function Itemstr({
                 alert('Error adding item to cart');
             }
         }
+=======
+        const newCartItem = {
+            productid,
+            image,
+            usp,
+            offer,
+            itemName,
+            price: Number(price),
+            discount,
+            priceBefore,
+            rating,
+            number,
+            count: 1
+        };
+        addToCart(newCartItem)
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
     };
-    const handleGetCartData = async () => {
-        try {
-            const res = await axios.get('http://localhost:8000/cart');
-            console.log(res);
-            const items = res.data.map(i => i.items[0])
-            setCart(items);
-            console.log('cc', cart)
-            console.log(items);
-        } catch (err) {
-            console.error(err);
-        }
-    }
-    useEffect(() => {
-        handleGetCartData()
-    }, [])
-
-    // const handleAddtobtn = (productid) => {
-
-    //     let existingProduct = cart.find(
-    //         (curItem) => curItem.productid == productid
-    //     )
-
-    //     if (existingProduct) {
-    //         alert('already in cart')
-    //         // count = count + 1
-    //     }
-    //     else {
-    //         count = count + 1
-    //         setCart([...cart, {
-    //             productid: productid,
-    //             image: image,
-    //             usp: usp,
-    //             offer: offer,
-    //             itemName: itemName,
-    //             price: Number(price),
-    //             discount: discount,
-    //             priceBefore: priceBefore,
-    //             colors: colors,
-    //             rating: rating,
-    //             number: number,
-    //             count: Number(count)
-
-    //         }])
-
-    //     }
-
-    // }
-
+   
     return (
         <>
             <div className='h-[380px] w-[280px] bg-[#fafafa] relative rounded-lg border-[1px] border-slate-300 overflow-hidden'>
@@ -164,7 +132,8 @@ function Itemstr({
                     </div>
                     <div>
                         <div>{colors}</div>
-                        <div className='w-[108px] h-[40px] mt-8 mr-6' ><button className='w-[106px] h-[39px] bg-black text-white rounded-lg ' onClick={() => handleAddtobtn(productid,
+                        <div className='w-[108px] h-[40px] mt-8 mr-6' ><button className='w-[106px] h-[39px] bg-black text-white rounded-lg ' onClick={() => handleAddtobtn(
+                            productid,
                             image,
                             usp,
                             offer,

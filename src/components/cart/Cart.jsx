@@ -35,8 +35,11 @@ function Cart() {
             console.log(res);
             const items = res.data.map(i => i.items[0])
             setCartt(items);
+<<<<<<< HEAD
             console.log('cc', cart)
             console.log(items);
+=======
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
         } catch (err) {
             console.error(err);
         }
@@ -61,7 +64,7 @@ function Cart() {
                         <div className='overflow-hidden h-[20%]  text-black font-bold text-xl mt-4  tracking-wider  flex items-center justify-center text-center'><p>Your cart is feeling lonely</p></div>
                         <div className='h-[30%] w-[100%]  flex justify-center items-center '>
                             <Link to='/'>
-                                <button onClick={() => alert(x)} id='startshoppingbtn' className='bg-[rgb(26,32,36)] text-white h-[60px] w-[200px] font-bold rounded-md '>Start Shopping</button>
+                                <button  id='startshoppingbtn' className='bg-[rgb(26,32,36)] text-white h-[60px] w-[200px] font-bold rounded-md '>Start Shopping</button>
                             </Link>
                         </div>
                     </div> :

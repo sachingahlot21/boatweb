@@ -17,10 +17,10 @@ const style = {
     p: 4,
 };
 
-function CheckoutAddress({ cntBtn, addValidFunc }) {
+function CheckoutAddress({ cntBtn, addValidFunc,stepTwoColor }) {
 
     const [pincode, setPincode] = useState()
-    const [isValid, setIsValid] = useState(false)
+    const [isValid, setIsValid] = useState(true)
     const [openProgress, setOpenProgress] = React.useState(false)
     const [city, setCity] = useState('')
     const [stateName, setStateName] = useState('')
@@ -32,33 +32,30 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
 
     const handlePincode = async () => {
         setOpenProgress(true)
+
         const options = {
-            method: 'POST',
-            url: 'https://pincode.p.rapidapi.com/',
+            method: 'GET',
+            url: 'https://india-pincode-api.p.rapidapi.com/v1/in/places/pincode',
+            params: { pincode: pincode },
             headers: {
-                'content-type': 'application/json',
-                'Content-Type': 'application/json',
-                'X-RapidAPI-Key': 'de9c729c89msh88c08711e0bf1bdp19fcb3jsn8218a092d712',
-                'X-RapidAPI-Host': 'pincode.p.rapidapi.com'
-            },
-            data: {
-                searchBy: 'pincode',
-                value: pincode
+                'x-rapidapi-key': 'de9c729c89msh88c08711e0bf1bdp19fcb3jsn8218a092d712',
+                'x-rapidapi-host': 'india-pincode-api.p.rapidapi.com'
             }
         };
 
         try {
             const response = await axios.request(options);
             if (response.status === 200) {
-                setOpenProgress(false)
-                const data = response.data[0];
-                const state = data.circle;
+                 setOpenProgress(false)
+                 console.log(response.data);
+                const data = response.data.result[0];
+                const state = data.statename;
                 if (state) {
                     setStateName(state)
                 } else {
                     console.error("Circle not found in response data:", data);
                 }
-                setCity(data.district)
+                setCity(data.taluk)
 
             }
 
@@ -103,6 +100,7 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
         console.log(city, stateName, userName, userAddress, userMail, addressType)
 
         cntBtn()
+        stepTwoColor(true)
     }
     useEffect(() => {
 
@@ -120,7 +118,7 @@ function CheckoutAddress({ cntBtn, addValidFunc }) {
         }
         else {
             setIsValid(false)
-
+             stepTwoColor(false)
         }
 
     }, [city, stateName, userName, userAddress, userMail, addressType, pincode])

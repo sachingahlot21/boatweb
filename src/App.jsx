@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useContext } from 'react'
+<<<<<<< HEAD
+=======
+import { LoginDetailContext } from './context/LoginDetailCon'
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
 import Slider1 from './components/topbody/Slider1'
 import Body1 from './components/bestSellers/Body1'
 import Main from './components/bodyblackf/Main'
@@ -17,9 +21,9 @@ function App() {
   const { searchLength } = useContext(Search)
   const [showResult, setShowResult] = useState(false)
   const [showContent, setShowContent] = useState(true)
+  const { setLoggedIn, setUserName, setUserEmail } = useContext(LoginDetailContext);
 
   useEffect(() => {
-    console.log(searchLength)
     if (searchLength > 0) {
       setShowResult(true)
       setShowContent(false)
@@ -29,10 +33,20 @@ function App() {
       setShowContent(true)
     }
   }, [searchLength])
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser)
+      setLoggedIn(parsedUser);
+      setUserName(parsedUser?.name);
+      setUserEmail(parsedUser?.email);
+    }
+  }, []);
   return (
     <>
       <div className={showResult ? 'block' : 'hidden'}>
-        <SearchData  />
+        <SearchData />
       </div>
       <div className={showContent ? 'block' : 'hidden'}>
         <>
@@ -40,7 +54,7 @@ function App() {
           <Body1 />
           <Main />
           <Shopbycat />
-          <Newlaunch />
+          {/* <Newlaunch /> */}
           <Shopbylife />
           <Bestofboat />
           <Jointhetribe />

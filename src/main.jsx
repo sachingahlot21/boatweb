@@ -33,6 +33,7 @@ const router = createBrowserRouter(
 )
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+<<<<<<< HEAD
     <CartContext>
       <SearchContext>
         <LoginDetailContextProvider>
@@ -40,5 +41,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </LoginDetailContextProvider>
       </SearchContext>
     </CartContext>
+=======
+
+    <LoginDetailContextProvider>
+      <CartContext>
+        <SearchContext>
+          <RouterProvider router={router} />
+        </SearchContext>
+      </CartContext>
+    </LoginDetailContextProvider>
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
   </React.StrictMode>
 )

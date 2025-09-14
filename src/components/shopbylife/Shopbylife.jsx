@@ -9,12 +9,22 @@ import life5 from './life5.jpg'
 function Shopbylife() {
     return (
         <>
+<<<<<<< HEAD
             <div className=' ml-4 lg:ml-12 h-[38px] mt-7 '>
+=======
+            <div className=' ml-4 lg:ml-10  h-[38px] mt-7 '>
+                
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
                 <h3 className='text-2xl font-normal'>Shop by <span className='font-bold'>Lifestyle</span></h3>
                 <div className='md:w-6 w-6 bg-red-600 h-0.5 ml-[162px]'></div>
+        
             </div>
             <div className=' overflow-x-scroll no-scrollbar   ml-2 lg:ml-12 w-full h-[486px] mt-2 '>
+<<<<<<< HEAD
                 <div className=' overflow-x-scroll no-scrollbar  w-[1215px] h-[457px] flex justify-between'>
+=======
+                <div className=' overflow-x-scroll no-scrollbar  w-[1215px] h-[457px] flex justify-between 2xl:mx-auto'>
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
                     <div className='w-[223px] overflow-x-scroll no-scrollbar h-[420px] bg-slate-200 overflow-y-hidden rounded-xl'>
                         <div className='w-[223px] h-[332px] bg-white'>
                             <img src={life1} alt='no img' ></img>

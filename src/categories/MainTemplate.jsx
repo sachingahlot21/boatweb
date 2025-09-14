@@ -8,26 +8,15 @@ import { FcFlashOn } from "react-icons/fc";
 import { RxDividerHorizontal } from "react-icons/rx";
 import { MdOutlineMaximize } from "react-icons/md";
 import Cartt from '../context/CartCon';
+<<<<<<< HEAD
+=======
+import { LoginDetailContext } from '../context/LoginDetailCon';
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
 import axios from 'axios'
 
-function MainTemplate(
-    {
-        // productid,
-        // itemName,
-        // category,
-        // rating,
-        // sold,
-        // price,
-        // priceBefore,
-        // discount,
-        // offer,
-        // usp,
-        // image,
-        // usp2,
-        // usp3,
-        prop
-    }
+function MainTemplate({ prop }
 ) {
+<<<<<<< HEAD
     const { cart, setCart } = useContext(Cartt)
     let pp = prop.price
 
@@ -90,12 +79,22 @@ function MainTemplate(
         }
     }
 
+=======
+
+    const { addToCart } = useContext(Cartt)
+    const handleAddtobtn = async (prop) => {
+        const updatedProp = { ...prop, count: 1 };
+        addToCart(updatedProp);
+    };
+
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
     function addComma(number) {
         if (typeof number !== 'number') {
             return number;
         }
         return number.toLocaleString();
     }
+<<<<<<< HEAD
 
     // const handleAddtobtn = (prop) => {
 
@@ -115,6 +114,8 @@ function MainTemplate(
     //     console.log(newCartItem)
 
     // }
+=======
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
 
     return (
         <>
@@ -126,7 +127,6 @@ function MainTemplate(
                     <div className='h-[26px] w-[177px] bg-[rgb(252,197,11)] flex'>
                         <span className='m-auto font-bold text-xs' >{prop.usp}</span>
                     </div>
-
 
                     {
                         prop.offer === 'none' ? null :
@@ -157,7 +157,7 @@ function MainTemplate(
                     </div>
                     <div className='font-bold text-l mt-1 ml-3'>{prop.itemName}</div>
                     <div className='flex mt-1  ml-3'>
-                        <div className='font-bold text-base'>&#8377;{addComma(pp)} </div>
+                        <div className='font-bold text-base'>&#8377;{addComma(prop.price)} </div>
                         <div className='line-through text-xs text-slate-400 font-semibold ml-1 mt-1.5'>&#8377;{prop.priceBefore}</div>
                         <div className='text-xs font-bold text-[#0b9c6b] ml-1 mt-1.5' >{prop.discount}</div>
 

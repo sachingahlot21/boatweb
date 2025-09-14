@@ -7,12 +7,10 @@ const LoginDetailContextProvider = ({ children }) => {
 
     const [userName, setUserName] = useState('')
     const [userEmail, setUserEmail] = useState('')
-    const [loggedIn, setLoggedIn] = useState(false)
+    const [userPhoneNo, setUserPhoneNo] = useState('')
+    const [loggedIn, setLoggedIn] = useState(null)
 
-    return
-    <LoginDetailContext.Provider value={{ userName, userEmail, setUserName, setUserEmail, setLoggedIn, loggedIn }}>
-        {children}
-    </LoginDetailContext.Provider>
+    return <LoginDetailContext.Provider value={{ userName, userEmail, setUserName, setUserEmail, setLoggedIn, loggedIn }}>{children}</LoginDetailContext.Provider>
 
 }
 export default LoginDetailContextProvider

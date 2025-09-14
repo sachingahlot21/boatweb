@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useRef, useEffect } from 'react';
 import Itemstr from '../itemdis/Itemstr'
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { FaRegThumbsUp } from "react-icons/fa"
@@ -30,27 +30,62 @@ import newlaunch2 from './newlaunch2.jpg'
 import newlaunch3 from './newlaunch3.jpg'
 import newlaunch4 from './newlaunch4.jpg'
 
-import { useState } from 'react';
-
-function Bestofboat() {
-
+export default function BestOfBoat() {
     const [activeButtonIndex, setActiveButtonIndex] = useState(0);
-    return (
-        <>
-            <div id='header' className='w-[1250px] h-[97px] ml-2 xl:ml-9 bg-white'>
-                <div className='h-[35px] w-[1250px] flex justify-between overflow-hidden'>
-                    <div className='h-[35px] w-[300px '>
-                        <h3 className='text-2xl font-normal'>Best Of <span className='font-bold'>boAt</span></h3>
-                        <div className='md:w-6 bg-red-600 h-0.5 ml-[113px]'></div>
-                    </div>
+<<<<<<< HEAD
+=======
+    const tabsRef = useRef([]);
+    const tabsContainerRef = useRef(null);
 
-                    <div className=' h-[35px] w-[100px] ml-[400px] mr-2  mt-1.5 text-sm float-right'>
-                        <div className='flex font-bold  text-center text-[#2f5b97]'>View All <IoArrowForwardCircleOutline className='font-bold ml-1 mt-1 text-center' /></div>
-                    </div>
+    const tabs = [
+        "Best Sellers",
+        "Home Theatre Systems",
+        "Top Earbuds",
+        "Top Watches",
+        "Car Accessories"
+    ];
+
+    useEffect(() => {
+        if (tabsRef.current[activeButtonIndex] && tabsContainerRef.current) {
+            const tabElement = tabsRef.current[activeButtonIndex];
+            const container = tabsContainerRef.current;
+
+            const tabRect = tabElement.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+
+            const centerPosition = tabElement.offsetLeft - (containerRect.width / 2) + (tabRect.width / 2);
+
+            container.scrollTo({
+                left: Math.max(0, centerPosition),
+                behavior: 'smooth'
+            });
+        }
+    }, [activeButtonIndex]);
+
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
+    return (
+
+        <div className="w-full max-w-6xl 2xl:mx-auto ml-4 lg:ml-10 bg-white">
+            <div className="flex justify-between items-center">
+                <div className='h-[35px] w-[300px '>
+                    <h3 className='text-2xl font-normal'>Best of <span className='font-bold'>boAt</span></h3>
+                    <div className='md:w-6 bg-red-600 h-0.5 ml-[113px]'></div>
                 </div>
-                <div className='w-[1195px] h-[60px] bg-white '>
-                    <div className='w-[1195px] h-[60px]  pt-4 flex justify-start'>
+
+            </div>
+            <div
+                ref={tabsContainerRef}
+                className="w-full overflow-x-auto py-3 scrollbar-hide"
+                style={{
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none',
+                    WebkitOverflowScrolling: 'touch'
+                }}
+            >
+                <div className="inline-flex space-x-2 px-2 min-w-max">
+                    {tabs.map((tab, index) => (
                         <button
+<<<<<<< HEAD
                             className={activeButtonIndex === 0 ? " bg-[#ecf0f4] rounded-[18px] w-[126px] h-[32px] bg-none text-black mr-2 font-bold " : "  bg-white w-[123px] h-[32px] bg-none text-[#696868] mr-2 "}
                             onClick={() => setActiveButtonIndex(0)}
                         >Best Sellers</button>
@@ -71,14 +106,30 @@ function Bestofboat() {
                             onClick={() => setActiveButtonIndex(4)}
                         >Car Accessories</button>
                     </div>
+=======
+                            key={index}
+                            ref={(el) => (tabsRef.current[index] = el)}
+                            className={`whitespace-nowrap px-4 py-2 rounded-[18px] transition-all duration-200 ${activeButtonIndex === index
+                                ? 'bg-[#ecf0f4] font-bold text-black'
+                                : 'bg-white text-[#696868] hover:bg-gray-50'
+                                }`}
+                            onClick={() => setActiveButtonIndex(index)}
+                        >
+                            {tab}
+                        </button>
+                    ))}
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
                 </div>
             </div>
             <div id='divblocks' className=' overflow-x-scroll no-scrollbar w-full h-[400px] '>
-                <div className={activeButtonIndex === 0 ? ' w-[1250px]  h-[400px]  block' : 'hidden'}>
+                <div className={activeButtonIndex === 0 ? ' w-[1250px] h-[400px] block' : 'hidden'}>
                     <div className='w-full h-96 mt-2 overflow-x-scroll no-scrollbar'>
-                        <div className='w-full h-96  xl:ml-10 ml-2 flex justify-between '>
+                        <div className='w-full h-96 xl:ml-10 ml-2 flex justify-between '>
                             <Itemstr
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
                                 image={bs1}
                                 usp='40 Hours Playback'
                                 offer='Engraving Available'
@@ -86,7 +137,7 @@ function Bestofboat() {
                                 price='999'
                                 discount='60%off'
                                 priceBefore='2,490'
-                                //   colors='+5'
+                                // colors='+5'
                                 rating='4.9'
                                 number='150'
                                 productid='boboat1'
@@ -94,6 +145,22 @@ function Bestofboat() {
                                 category='ear_buds'
                             />
 
+                            {/* {
+                                productid: 'neckBands4',
+                            itemName: 'Rockerz 103 Pro ',
+                            category: 'neck bands',
+                            rating: '4.9',
+                            sold: '27',
+                            price: 1499,
+                            priceBefore: '7,990',
+                            discount: '81% off',
+                            offer: 'none',
+                            usp: '40 Hours Playback',
+                            usp2: 'ASAP Charging',
+                            usp3: 'Bluetooth v5.O',
+                            image: neckbands4,
+                            count: 0,
+    }, */}
                             <Itemstr
                                 productid='boboat2'
                                 offer='Engraving Available'
@@ -103,7 +170,7 @@ function Bestofboat() {
                                 price='999'
                                 discount='67%off'
                                 priceBefore='2,990'
-                                //   colors='+5'
+                                // colors='+5'
                                 rating='4.9'
                                 number='182'
                                 category='ear_buds'
@@ -118,7 +185,7 @@ function Bestofboat() {
                                 price='1499'
                                 discount='81%off'
                                 priceBefore='7,990'
-                                //    colors='+5'
+                                // colors='+5'
                                 rating='4.8'
                                 number='31'
                                 category='ear_buds'
@@ -132,7 +199,7 @@ function Bestofboat() {
                                 price='1299'
                                 discount='71%off'
                                 priceBefore='4,490'
-                                //    colors='+5'
+                                // colors='+5'
                                 rating='4.9'
                                 number='647'
                                 category='ear_buds'
@@ -142,9 +209,13 @@ function Bestofboat() {
 
 
                 </div>
+<<<<<<< HEAD
                 <div className={activeButtonIndex === 1 ? 'w-[1250px] h-[400px]  block' : 'hidden'}>
+=======
+                <div className={activeButtonIndex === 1 ? 'w-[1250px] h-[400px] block' : 'hidden'}>
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
                     <div className='w-full h-96 mt-2'>
-                        <div className='w-[1185px] h-96  xl:ml-10 ml-2 flex justify-between overflow-hidden'>
+                        <div className='w-[1185px] h-96 xl:ml-10 ml-2 flex justify-between overflow-hidden'>
                             <Itemstr
                                 productid='boboat4'
                                 image={ht1}
@@ -154,7 +225,7 @@ function Bestofboat() {
                                 price='5299'
                                 discount='47%off'
                                 priceBefore='9,990'
-                                //   colors='+5'
+                                // colors='+5'
                                 rating='5.0'
                                 number='1'
                                 category='home_theater'
@@ -170,7 +241,7 @@ function Bestofboat() {
                                 price='4999'
                                 discount='37%off'
                                 priceBefore='7,990'
-                                //   colors='+5'
+                                // colors='+5'
                                 rating='firstuser'
                                 number='182'
                                 category='home_theater'
@@ -184,7 +255,7 @@ function Bestofboat() {
                                 price='5499'
                                 discount='66%off'
                                 priceBefore='15,990'
-                                //    colors='+5'
+                                // colors='+5'
                                 rating='firstuser'
                                 number='31'
                                 category='home_theater'
@@ -198,7 +269,7 @@ function Bestofboat() {
                                 price='2199'
                                 discount='45%off'
                                 priceBefore='3,990'
-                                //    colors='+5'
+                                // colors='+5'
                                 rating='firstuser'
                                 number='647'
                                 category='home_theater'
@@ -206,9 +277,13 @@ function Bestofboat() {
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div className={activeButtonIndex === 2 ? 'w-[1250px]  h-[400px]  block' : 'hidden'}>
+=======
+                <div className={activeButtonIndex === 2 ? 'w-[1250px] h-[400px] block' : 'hidden'}>
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
                     <div className='w-full h-96 mt-2'>
-                        <div className='w-[1185px] h-96  xl:ml-10 ml-2 flex justify-between overflow-hidden'>
+                        <div className='w-[1185px] h-96 xl:ml-10 ml-2 flex justify-between overflow-hidden'>
                             <Itemstr
                                 productid='boboat9'
                                 image={te1}
@@ -218,7 +293,7 @@ function Bestofboat() {
                                 price='1099'
                                 discount='69%off'
                                 priceBefore='3,490'
-                                //   colors='+5'
+                                // colors='+5'
                                 rating='5.0'
                                 number='11'
                                 category='top_earbuds'
@@ -234,7 +309,7 @@ function Bestofboat() {
                                 price='1299'
                                 discount='57%off'
                                 priceBefore='2,990'
-                                //   colors='+5'
+                                // colors='+5'
                                 rating='4.9'
                                 number='104'
                                 category='top_earbuds'
@@ -249,7 +324,7 @@ function Bestofboat() {
                                 price='1399'
                                 discount='60%off'
                                 priceBefore='3,490'
-                                //    colors='+5'
+                                // colors='+5'
                                 rating='4.9'
                                 number='58'
                                 category='top_earbuds'
@@ -264,7 +339,7 @@ function Bestofboat() {
                                 price='2999'
                                 discount='71%off'
                                 priceBefore='4,990'
-                                //    colors='+5'
+                                // colors='+5'
                                 rating='4.7'
                                 number='6'
                                 category='top_earbuds'
@@ -273,7 +348,11 @@ function Bestofboat() {
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div className={activeButtonIndex === 3 ? 'w-[1250px]  h-[400px]  block' : 'hidden'}>
+=======
+                <div className={activeButtonIndex === 3 ? 'w-[1250px] h-[400px] block' : 'hidden'}>
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
                     <div className='w-full h-96 mt-2'>
                         <div className='w-[1185px] h-96 xl:ml-10 ml-2 flex justify-between overflow-hidden'>
                             <Itemstr
@@ -285,7 +364,7 @@ function Bestofboat() {
                                 price='1799'
                                 discount='78%off'
                                 priceBefore='7,999'
-                                //   colors='+5
+                                // colors='+5
                                 rating='4.9'
                                 number='15'
                                 category='top_watches'
@@ -301,7 +380,7 @@ function Bestofboat() {
                                 price='1499'
                                 discount='81%off'
                                 priceBefore='7,990'
-                                //   colors='+5'
+                                // colors='+5'
                                 rating='4.8'
                                 number='27'
                                 category='top_watches'
@@ -316,7 +395,7 @@ function Bestofboat() {
                                 price='1,799'
                                 discount='74%off'
                                 priceBefore='6,990'
-                                //    colors='+5'
+                                // colors='+5'
                                 rating='4.9'
                                 number='61'
                                 category='top_watches'
@@ -331,7 +410,7 @@ function Bestofboat() {
                                 price='1,699'
                                 discount='79%off'
                                 priceBefore='7,990'
-                                //    colors='+5'
+                                // colors='+5'
                                 rating='4.9'
                                 number='49'
                                 category='top_watches'
@@ -339,9 +418,13 @@ function Bestofboat() {
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div className={activeButtonIndex === 4 ? 'w-[1250px]  h-[400px]  block' : 'hidden'}>
+=======
+                <div className={activeButtonIndex === 4 ? 'w-[1250px] h-[400px] block' : 'hidden'}>
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
                     <div className='w-full h-96 mt-2'>
-                        <div className='w-[1185px] h-96  xl:ml-10 ml-2 flex justify-between overflow-hidden'>
+                        <div className='w-[1185px] h-96 xl:ml-10 ml-2 flex justify-between overflow-hidden'>
                             <Itemstr
                                 productid='boboat17'
                                 image={ca1}
@@ -351,7 +434,7 @@ function Bestofboat() {
                                 price='499'
                                 discount='50%off'
                                 priceBefore='999'
-                                //   colors='+5
+                                // colors='+5
                                 rating='4.9'
                                 number='15'
                                 category='car_access'
@@ -368,7 +451,7 @@ function Bestofboat() {
                                 price='499'
                                 discount='50%off'
                                 priceBefore='999'
-                                //   colors='+5'
+                                // colors='+5'
                                 rating='4.9'
                                 number='13'
                                 category='car_access'
@@ -382,7 +465,7 @@ function Bestofboat() {
                                 price='499'
                                 discount='50%off'
                                 priceBefore='999'
-                                //    colors='+5'
+                                // colors='+5'
                                 rating='5.0'
                                 number='3'
                                 category='car_access'
@@ -395,7 +478,7 @@ function Bestofboat() {
                                 itemName='Rapid Car Charger'
                                 discount='33%off'
                                 priceBefore='899'
-                                //    colors='+5'
+                                // colors='+5'
                                 rating='4.9'
                                 price='499'
                                 number='15'
@@ -405,8 +488,20 @@ function Bestofboat() {
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </>
     )
 }
 
 export default Bestofboat
+=======
+
+            <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+        </div>
+    );
+}
+>>>>>>> 0e86bb36377f131d437a41562f6ac1c7a7849b2f
